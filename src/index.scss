@@ -6,13 +6,10 @@ body {
 
 body {
   background-color: #dddddd;
-  height: 100%;
-  width: 100%;
   position: relative;
   overflow-x: hidden;
-  // font-family: 'Monument Extended';
-  margin: 0;
-  padding: 0;
+  height: 100vh;
+
   
   .grain {
     position: fixed;
@@ -20,8 +17,8 @@ body {
     left: 0;
     height: 100%;
     width: 100%;
-    pointer-event: none;
-    z-index: 300;
+    // pointer-event: none;
+    z-index: 100;
     transform: translateZ(0);
     
     &:before {
@@ -58,11 +55,6 @@ body {
     }
   }
 }
-
-h1 {
-  
-}
-
 
 .wrapper {
   max-width: 1110px;
@@ -118,3 +110,54 @@ h1 {
   }
 }
 
+.main {
+  padding-top: 40px;
+}
+
+.main__title {
+  font-size: 28px;
+  font-weight: 700;
+  padding-bottom: 40px;
+}
+
+.cards {
+  display: flex;
+  gap: 55px;
+}
+
+.cards__item {
+  background: #fff;
+  max-width: 230px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.cards__item-brand {
+  font-weight: bold;
+  padding: 10px 0;
+}
+
+.cards__item-model {
+  padding-bottom: 10px;
+}
+
+.cards__item-price {
+  font-size: 18px;
+}
+
+.cards__item-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cards__item-btn {
+  background-color: #fff;
+  border: 1px solid f2f2f2;
+  border-radius: 8px;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+  position: relative;
+  z-index: 101;
+}
