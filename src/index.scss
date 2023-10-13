@@ -114,11 +114,7 @@ body {
   padding-top: 40px;
 }
 
-.main__title {
-  font-size: 28px;
-  font-weight: 700;
-  padding-bottom: 40px;
-}
+
 
 .cards {
   display: flex;
@@ -160,4 +156,35 @@ body {
   cursor: pointer;
   position: relative;
   z-index: 101;
+}
+
+.main__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.main__title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.search {
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    opacity: 0.5;
+  }
+}
+
+.search__input {
+  border: 1px solid #a1a1a1;
+  border-radius: 6px;
+  padding: 5px 40px;
+  z-index: 101;
+  position: relative;
 }
