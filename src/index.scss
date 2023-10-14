@@ -148,14 +148,36 @@ body {
 }
 
 .cards__item-btn {
-  background-color: #fff;
-  border: 1px solid f2f2f2;
+  background-color: #202020;
+  border: 1px solid #f2f2f2;
   border-radius: 8px;
   height: 32px;
   width: 32px;
   cursor: pointer;
   position: relative;
   z-index: 101;
+  transition: opacity .2s ease-in;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.card__item-favorit {
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 101;
+  cursor: pointer;
+  transition: all .2s ease-in;
+  display: flex;
+  opacity: 0.7;
+
+  &:hover {
+    background: #a1a1a1;
+  }
 }
 
 .main__top {

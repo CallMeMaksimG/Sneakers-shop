@@ -36,6 +36,7 @@ function App() {
                     </div>
                     <div className="cards">
                         <div className="cards__item">
+                            <div className="card__item-favorit"><img src="./img/heart-unliked.svg"></img></div>
                             <img src="./img/sneakers/NB990v3.jpg"></img>
                             <p className="cards__item-brand">New Balance</p>
                             <p className="cards__item-model">
@@ -51,6 +52,7 @@ function App() {
                             </div>
                         </div>
                         <div className="cards__item">
+                        <div className="card__item-favorit"><img src="./img/heart-unliked.svg"></img></div>
                             <img src="./img/sneakers/NB990v5.jpg"></img>
                             <p className="cards__item-brand">New Balance</p>
                             <p className="cards__item-model">
@@ -66,6 +68,7 @@ function App() {
                             </div>
                         </div>
                         <div className="cards__item">
+                        <div className="card__item-favorit"><img src="./img/heart-unliked.svg"></img></div>
                             <img src="./img/sneakers/NB990v3.jpg"></img>
                             <p className="cards__item-brand">Brand</p>
                             <p className="cards__item-model">Name Model</p>
@@ -79,6 +82,7 @@ function App() {
                             </div>
                         </div>
                         <div className="cards__item">
+                        <div className="card__item-favorit"><img src="./img/heart-unliked.svg"></img></div>
                             <img src="./img/sneakers/NB990v3.jpg"></img>
                             <p className="cards__item-brand">Brand</p>
                             <p className="cards__item-model">Name Model</p>
