@@ -1,0 +1,48 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        
+        li {
+            span {
+                padding-left: 10px;
+                color: #101010;
+            }
+        }
+    }
+}
+
+.header__logo {
+    padding: 5px;
+    background: #404040;
+    border-radius: 50%;
+    transform: rotate(-20deg);
+  }
+
+.header__left {
+    display: flex;
+    align-items: center;
+  }
+  
+.header__info {
+    padding-left: 15px;
+  
+    h3 {
+      font-size: 38px;
+      font-weight: bolder;
+      line-height: 1.1;
+      letter-spacing: -2px;
+    }
+  
+    p {
+      text-transform: uppercase;
+      font-size: 14px;
+      color: #404040;
+    }
+  }
