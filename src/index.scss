@@ -243,6 +243,11 @@ body {
   }
 }
 
+.cart__items {
+  overflow: auto;
+  margin-bottom: 30px;
+}
+
 .cart__item {
   display: flex;
   gap: 20px;
@@ -321,4 +326,11 @@ body {
   &:hover {
     opacity: .7;
   }
+}
+
+.cart__close {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
 }
