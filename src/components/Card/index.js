@@ -15,7 +15,7 @@ function Card({brand, model, img, price}) {
                                 <span className="cards__item-price">
                                     {price} руб.
                                 </span>
-                                <button className="cards__item-btn btn">
+                                <button className="cards__item-btn btn" onClick={() => console.log({img, brand, model, price})}>
                                     <img src="./img/plus.svg"></img>
                                 </button>
                             </div>
