@@ -2,6 +2,23 @@ import Header from './components/Header';
 import Card from './components/Card';
 import Cart from './components/Cart';
 
+const arr = [
+    {
+        id: 1,
+        brand: 'New Balance',
+        model: '990v3 x JJJJound',
+        img: './img/sneakers/NB990v3.jpg',
+        price: 87990,
+    },
+    {
+        id: 2,
+        brand: 'New Balance',
+        model: '990v5 x Aimé Leon Dore',
+        img: './img/sneakers/NB990v5.jpg',
+        price: 118990,
+    },
+];
+
 function App() {
     return (
         <>
@@ -21,7 +38,15 @@ function App() {
                         </div>
                     </div>
                     <div className="cards">
-                        <Card />
+                        {arr.map((card) => (
+                            <Card
+                                key={card.id}
+                                brand={card.brand}
+                                model={card.model}
+                                img={card.img}
+                                price={card.price}
+                            />
+                        ))}
                     </div>
                 </main>
             </div>
