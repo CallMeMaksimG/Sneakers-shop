@@ -1,10 +1,10 @@
 import './Cart.scss';
 
-function Cart() {
+function Cart({onClose}) {
     return (
-        <div className="overlay" style={{ display: 'none' }}>
+        <div className="overlay">
             <div className="cart">
-                <div className="cart__close">
+                <div className="cart__close" onClick={onClose}>
                     <img
                         className="cart__close-btn"
                         src="./img/icon/close.svg"

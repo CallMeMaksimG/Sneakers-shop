@@ -1,6 +1,7 @@
 import './Header.scss';
 
-function Header() {
+function Header({onClickCart}) {
+    // console.log(props)
     return (
         <header className="header">
             <div className="header__left">
@@ -12,7 +13,7 @@ function Header() {
             </div>
 
             <ul className="header__right">
-                <li>
+                <li className="header__cart" onClick={onClickCart}>
                     <img src="/img/icon/cart.svg"></img>
                     <span>1205 руб.</span>
                 </li>

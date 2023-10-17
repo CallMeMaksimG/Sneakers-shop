@@ -29,6 +29,12 @@
     display: flex;
     align-items: center;
   }
+
+.header__cart {
+  position: relative;
+  z-index: 102;
+  cursor: pointer;
+}
   
 .header__info {
     padding-left: 15px;
