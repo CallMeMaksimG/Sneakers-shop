@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import Card from './components/Card';
 import Cart from './components/Cart/index';
+import { useState } from 'react';
 
 const arr = [
     {
@@ -19,6 +20,10 @@ const arr = [
     },
 ];
 
+
+
+
+
 function App() {
     return (
         <>
@@ -30,7 +35,7 @@ function App() {
                     <div className="main__top">
                         <h1 className="main__title">Все кроссовки</h1>
                         <div className="search">
-                            <img src="./img/search.svg" alt="search" />
+                            <img src="./img/icon/search.svg" alt="search" />
                             <input
                                 className="search__input"
                                 placeholder="Поиск..."

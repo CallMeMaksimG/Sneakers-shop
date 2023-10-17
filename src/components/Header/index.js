@@ -4,7 +4,7 @@ function Header() {
     return (
         <header className="header">
             <div className="header__left">
-                <img className="header__logo" src="/img/logo.svg"></img>
+                <img className="header__logo" src="/img/icon/logo.svg"></img>
                 <div className="header__info">
                     <h3>SNEAKERSHOP</h3>
                     <p>Магазин кроссовок</p>
@@ -13,11 +13,11 @@ function Header() {
 
             <ul className="header__right">
                 <li>
-                    <img src="/img/cart.svg"></img>
+                    <img src="/img/icon/cart.svg"></img>
                     <span>1205 руб.</span>
                 </li>
                 <li>
-                    <img src="/img/account.svg"></img>
+                    <img src="/img/icon/account.svg"></img>
                     <span>Профиль</span>
                 </li>
             </ul>

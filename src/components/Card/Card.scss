@@ -33,10 +33,21 @@
     cursor: pointer;
     position: relative;
     z-index: 101;
-    transition: opacity .2s ease-in;
+    transition: opacity background .2s ease-in;
   
     &:hover {
       opacity: 0.6;
+    }
+
+    &--active {
+      background-color: #fff;
+      border: 1px solid #ffffff;
+      border-radius: 8px;
+      min-height: 32px;
+      min-width: 32px;
+      
+      z-index: 101;
+      transition: opacity .2s ease-in;
     }
   }
   
