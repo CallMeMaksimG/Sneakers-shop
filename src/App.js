@@ -1,32 +1,21 @@
 import Header from './components/Header';
 import Card from './components/Card';
 import Cart from './components/Cart/index';
-import { useState } from 'react';
-
-const arr = [
-    {
-        id: 1,
-        brand: 'New Balance',
-        model: '990v3 x JJJJound',
-        img: './img/sneakers/NB990v3.jpg',
-        price: 87990,
-    },
-    {
-        id: 2,
-        brand: 'New Balance',
-        model: '990v5 x Aimé Leon Dore',
-        img: './img/sneakers/NB990v5.jpg',
-        price: 118990,
-    },
-];
-
-
-
-
+import { useEffect, useState } from 'react';
 
 function App() {
-
+    const [items, setItems] = useState([]);
     const [cartOpened, setCartOpened] = useState(false);
+    useEffect(() => {
+        fetch('https://652e65d80b8d8ddac0b14e80.mockapi.io/items')
+            .then((response) => {
+                return response.json();
+            })
+            .then((json) => {
+                setItems(json);
+            });
+    }, []);
+
     return (
         <>
             {cartOpened && <Cart onClose={() => setCartOpened(false)} />}
@@ -45,7 +34,7 @@ function App() {
                         </div>
                     </div>
                     <div className="cards">
-                        {arr.map((card) => (
+                        {items.map((card) => (
                             <Card
                                 key={card.id}
                                 brand={card.brand}
