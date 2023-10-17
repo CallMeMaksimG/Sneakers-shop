@@ -1,33 +1,40 @@
 import { useState } from 'react';
 import './Card.scss';
 
-function Card({brand, model, img, price, onAddFavorite}) {
-
+function Card({ brand, model, img, price,  onAddFavorite, onAddCart }) {
     const [isAdded, setIsAdded] = useState(false);
 
-    const onAddCart = () => {
+    const AddCart= () => {
+        onAddCart({brand, model, img, price});
         setIsAdded(!isAdded);
-    }
+    };
 
     return (
         <div className="cards__item">
-                            <div className="card__item-favorit" onClick={onAddFavorite}>
-                                <img src="./img/icon/heart-unliked.svg"></img>
-                            </div>
-                            <img src={img}></img>
-                            <p className="cards__item-brand">{brand}</p>
-                            <p className="cards__item-model">
-                                {model}
-                            </p>
-                            <div className="cards__item-bottom">
-                                <span className="cards__item-price">
-                                    {price} руб.
-                                </span>
-                                <button className={!isAdded ? "cards__item-btn" : "cards__item-btn--active"} onClick={onAddCart}>
-                                    <img src={!isAdded ? "./img/icon/plus.svg" : "./img/icon/check.svg"}></img>
-                                </button>
-                            </div>
-                        </div>
+            <div className="card__item-favorit" onClick={onAddFavorite}>
+                <img src="./img/icon/heart-unliked.svg"></img>
+            </div>
+            <img src={img}></img>
+            <p className="cards__item-brand">{brand}</p>
+            <p className="cards__item-model">{model}</p>
+            <div className="cards__item-bottom">
+                <span className="cards__item-price">{price} руб.</span>
+                <button
+                    className={
+                        !isAdded ? 'cards__item-btn' : 'cards__item-btn--active'
+                    }
+                    onClick={AddCart}
+                >
+                    <img
+                        src={
+                            !isAdded
+                                ? './img/icon/plus.svg'
+                                : './img/icon/check.svg'
+                        }
+                    ></img>
+                </button>
+            </div>
+        </div>
     );
 }
 

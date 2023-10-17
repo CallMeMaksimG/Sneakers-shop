@@ -1,6 +1,10 @@
 import './Cart.scss';
 
-function Cart({onClose}) {
+
+const totalPrice = (items) => {
+    console.log(items)
+}
+function Cart({ onClose, items = [] }) {
     return (
         <div className="overlay">
             <div className="cart">
@@ -13,25 +17,29 @@ function Cart({onClose}) {
                 </div>
                 <h2>Корзина</h2>
                 <div className="cart__items">
-                    <div className="cart__item">
-                        <img
-                            className="cart__item-img"
-                            src="./img/sneakers/NB990v3.jpg"
-                            alt="New Balance 990v3"
-                        ></img>
-                        <div className="cart__item-info">
-                            <p>New Balance 990 v3 </p>
-                            <span>87 990 руб.</span>
+                    {items.map((item) => {
+                        return(
+                        <div className="cart__item">
+                            <img
+                                className="cart__item-img"
+                                src={item.img}
+                                alt={item.brand + item.model}
+                            ></img>
+                            <div className="cart__item-info">
+                                <p>{item.model}</p>
+                                <span>{item.price} руб.</span>
+                            </div>
+                            <button className="cart__item-delete-btn">
+                                <img src="./img/icon/delete.svg"></img>
+                            </button>
                         </div>
-                        <button className="cart__item-delete-btn">
-                            <img src="./img/icon/delete.svg"></img>
-                        </button>
-                    </div>
+                        )
+                    })}
                 </div>
                 <div className="cart__bottom">
                     <div className="cart__total-price">
                         <span>Итог</span>
-                        <span className="cart__price">89 990 руб.</span>
+                        <span className="cart__price">{totalPrice} руб.</span>
                     </div>
                     <div className="cart__bottom-btn-wrapper">
                         <button className="cart__bottom-btn">

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
     const [items, setItems] = useState([]);
+    const [cartItems, setCartItems] = useState([]);
     const [cartOpened, setCartOpened] = useState(false);
     useEffect(() => {
         fetch('https://652e65d80b8d8ddac0b14e80.mockapi.io/items')
@@ -16,9 +17,14 @@ function App() {
             });
     }, []);
 
+    const onAddToCart = (obj) => {
+        setCartItems(prev => [...prev, obj]);
+    }
+
+
     return (
         <>
-            {cartOpened && <Cart onClose={() => setCartOpened(false)} />}
+            {cartOpened && <Cart items={cartItems} onClose={() => setCartOpened(false)} />}
             <div className="grain"></div>
             <div className="container">
                 <Header onClickCart={() => setCartOpened(true)} />
@@ -41,6 +47,8 @@ function App() {
                                 model={card.model}
                                 img={card.img}
                                 price={card.price}
+                                onAddFavorite={() => console.log('add to favorite')}
+                                onAddCart={onAddToCart}
                             />
                         ))}
                     </div>
