@@ -18,14 +18,23 @@ function App() {
     }, []);
 
     const onAddToCart = (obj) => {
-        console.log(obj, 'objects')
-        setCartItems(prev => [...prev, obj]);
-    }
+        setCartItems((prev) => [...prev, obj]);
+    };
 
+    const onDeleteCartItem = (obj, id) => {
+        setCartItems(obj.filter((item) => item.id !== id));
+    };
 
     return (
         <>
-            {cartOpened && <Cart items={cartItems} onClose={() => setCartOpened(false)} />}
+            {cartOpened && (
+                <Cart
+                    items={cartItems}
+                    addToCart={onAddToCart}
+                    deleteItems={onDeleteCartItem}
+                    onClose={() => setCartOpened(false)}
+                />
+            )}
             <div className="grain"></div>
             <div className="container">
                 <Header onClickCart={() => setCartOpened(true)} />
@@ -44,11 +53,14 @@ function App() {
                         {items.map((card) => (
                             <Card
                                 key={card.id}
+                                id={card.id}
                                 brand={card.brand}
                                 model={card.model}
                                 img={card.img}
                                 price={card.price}
-                                onAddFavorite={() => console.log('add to favorite')}
+                                onAddFavorite={() =>
+                                    console.log('add to favorite')
+                                }
                                 onAddCart={onAddToCart}
                             />
                         ))}

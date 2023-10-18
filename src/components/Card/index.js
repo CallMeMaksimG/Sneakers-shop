@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import './Card.scss';
 
-function Card({ brand, model, img, price,  onAddFavorite, onAddCart }) {
+function Card({ id, brand, model, img, price, onAddFavorite, onAddCart }) {
     const [isAdded, setIsAdded] = useState(false);
 
-    const AddCart= () => {
-        onAddCart({ brand, model, img, price});
+    const AddCart = () => {
+        onAddCart({ id, brand, model, img, price });
         setIsAdded(!isAdded);
     };
 
