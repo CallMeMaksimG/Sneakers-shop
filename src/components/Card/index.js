@@ -5,7 +5,7 @@ function Card({ brand, model, img, price,  onAddFavorite, onAddCart }) {
     const [isAdded, setIsAdded] = useState(false);
 
     const AddCart= () => {
-        onAddCart({brand, model, img, price});
+        onAddCart({ brand, model, img, price});
         setIsAdded(!isAdded);
     };
 

@@ -1,10 +1,9 @@
+import { useState } from 'react';
 import './Cart.scss';
 
 
-const totalPrice = (items) => {
-    console.log(items)
-}
 function Cart({ onClose, items = [] }) {
+    
     return (
         <div className="overlay">
             <div className="cart">
@@ -18,8 +17,9 @@ function Cart({ onClose, items = [] }) {
                 <h2>Корзина</h2>
                 <div className="cart__items">
                     {items.map((item) => {
+                        console.log(item, 'item')
                         return(
-                        <div className="cart__item">
+                        <div key={item.id} className="cart__item">
                             <img
                                 className="cart__item-img"
                                 src={item.img}
@@ -29,7 +29,7 @@ function Cart({ onClose, items = [] }) {
                                 <p>{item.model}</p>
                                 <span>{item.price} руб.</span>
                             </div>
-                            <button className="cart__item-delete-btn">
+                            <button className="cart__item-delete-btn"  onClick={() => console.log('')}>
                                 <img src="./img/icon/delete.svg"></img>
                             </button>
                         </div>
@@ -39,7 +39,9 @@ function Cart({ onClose, items = [] }) {
                 <div className="cart__bottom">
                     <div className="cart__total-price">
                         <span>Итог</span>
-                        <span className="cart__price">{totalPrice} руб.</span>
+                        <span className="cart__price">{items.reduce((acc, curentValue) => {
+                           return acc + curentValue.price
+                        }, 0)} руб.</span>
                     </div>
                     <div className="cart__bottom-btn-wrapper">
                         <button className="cart__bottom-btn">

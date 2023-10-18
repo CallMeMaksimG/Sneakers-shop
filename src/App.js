@@ -18,6 +18,7 @@ function App() {
     }, []);
 
     const onAddToCart = (obj) => {
+        console.log(obj, 'objects')
         setCartItems(prev => [...prev, obj]);
     }
 
