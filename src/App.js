@@ -37,7 +37,9 @@ function App() {
             )}
             <div className="grain"></div>
             <div className="container">
-                <Header onClickCart={() => setCartOpened(true)} />
+                <Header
+                    onClickCart={() => setCartOpened(true)}
+                />
                 <main className="main">
                     <div className="main__top">
                         <h1 className="main__title">Все кроссовки</h1>

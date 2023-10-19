@@ -15,7 +15,6 @@ function Cart({ onClose, items = [], deleteItems }) {
                 <h2>Корзина</h2>
                 <div className="cart__items">
                     {items.map((item) => {
-                        console.log(item, 'item');
                         return (
                             <div key={item.id} className="cart__item">
                                 <img
@@ -43,8 +42,7 @@ function Cart({ onClose, items = [], deleteItems }) {
                         <span className="cart__price">
                             {items.reduce((acc, curentValue) => {
                                 return acc + curentValue.price;
-                            }, 0)}{' '}
-                            руб.
+                            }, 0)}{ ' ' }руб.
                         </span>
                     </div>
                     <div className="cart__bottom-btn-wrapper">

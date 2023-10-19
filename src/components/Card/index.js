@@ -4,7 +4,7 @@ import './Card.scss';
 function Card({ id, brand, model, img, price, onAddFavorite, onAddCart }) {
     const [isAdded, setIsAdded] = useState(false);
 
-    const AddCart = () => {
+    const onClickPlus = () => {
         onAddCart({ id, brand, model, img, price });
         setIsAdded(!isAdded);
     };
@@ -23,7 +23,7 @@ function Card({ id, brand, model, img, price, onAddFavorite, onAddCart }) {
                     className={
                         !isAdded ? 'cards__item-btn' : 'cards__item-btn--active'
                     }
-                    onClick={AddCart}
+                    onClick={onClickPlus}
                 >
                     <img
                         src={
