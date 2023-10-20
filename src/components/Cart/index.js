@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Cart.scss';
 
-function Cart({ onClose, items = [], deleteItems }) {
+function Cart({ onClose, items = [], onRemove }) {
     return (
         <div className="overlay">
             <div className="cart">
@@ -13,7 +13,7 @@ function Cart({ onClose, items = [], deleteItems }) {
                     ></img>
                 </div>
                 <h2>Корзина</h2>
-                <div className="cart__items">
+                {items.length > 0 ? (<div className="cart__items-wrapper"><div className="cart__items">
                     {items.map((item) => {
                         return (
                             <div key={item.id} className="cart__item">
@@ -29,7 +29,7 @@ function Cart({ onClose, items = [], deleteItems }) {
                                 </div>
                                 <button
                                     className="cart__item-delete-btn"
-                                    onClick={() => deleteItems(items, item.id)}
+                                    onClick={() => onRemove(item.id, items)}
                                 >
                                     <img src="./img/icon/delete.svg"></img>
                                 </button>
@@ -51,10 +51,16 @@ function Cart({ onClose, items = [], deleteItems }) {
                             Оформить заказ
                         </button>
                     </div>
-                </div>
+                </div> </div>) : <div className='cart__cart-empty-wrapper'><div className="cart__cart-empty">
+                    <p className="cart__cart-empty-text">Ваша корзина пуста</p>
+                    <button className="cart__cart-empty-btn">Перейти в каталог</button>
+                </div></div>}
+                
+                
             </div>
-        </div>
-    );
-}
+            </div>
+        
+    )
+                        }
 
 export default Cart;
