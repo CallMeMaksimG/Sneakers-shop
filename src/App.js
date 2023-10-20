@@ -1,4 +1,5 @@
 import Header from './components/Header';
+import axios from 'axios';
 import Card from './components/Card';
 import Cart from './components/Cart/index';
 import { useEffect, useState } from 'react';
@@ -10,17 +11,14 @@ function App() {
     const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
-        fetch('https://652e65d80b8d8ddac0b14e80.mockapi.io/items')
-            .then((response) => {
-                return response.json();
-            })
-            .then((json) => {
-                setItems(json);
-            });
+        axios.get('https://652e65d80b8d8ddac0b14e80.mockapi.io/items').then(response => {
+            setItems(response.data)
+        })
     }, []);
 
     const onAddToCart = (obj) => {
         setCartItems((prev) => [...prev, obj]);
+
     };
 
     const onDeleteCartItem = (obj, id) => {
