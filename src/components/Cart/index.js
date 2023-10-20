@@ -23,6 +23,7 @@ function Cart({ onClose, items = [], deleteItems }) {
                                     alt={item.brand + item.model}
                                 ></img>
                                 <div className="cart__item-info">
+                                    <p>{item.brand}</p>
                                     <p>{item.model}</p>
                                     <span>{item.price} руб.</span>
                                 </div>
