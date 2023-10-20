@@ -11,15 +11,23 @@ function App() {
     const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
-        axios.get('https://652e65d80b8d8ddac0b14e80.mockapi.io/items').then(response => {
-            setItems(response.data)
-        })
+        axios
+            .get('https://652e65d80b8d8ddac0b14e80.mockapi.io/items')
+            .then((response) => {
+                setItems(response.data);
+            });
+        axios
+        .get('https://652e65d80b8d8ddac0b14e80.mockapi.io/cart')
+        .then((response) => {
+            setCartItems(response.data);
+        });
     }, []);
 
     const onAddToCart = (obj) => {
+        axios.post('https://652e65d80b8d8ddac0b14e80.mockapi.io/cart', obj);
         setCartItems((prev) => [...prev, obj]);
-
     };
+
 
     const onDeleteCartItem = (obj, id) => {
         setCartItems(obj.filter((item) => item.id !== id));
