@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 function App() {
     const [items, setItems] = useState([]);
     const [cartItems, setCartItems] = useState([]);
+    const [favorites, setFavorites] = useState([]);
     const [cartOpened, setCartOpened] = useState(false);
     const [searchValue, setSearchValue] = useState('');
 
@@ -31,8 +32,12 @@ function App() {
     const onRemoveItem = (id, obj) => {
         axios.delete(`https://652e65d80b8d8ddac0b14e80.mockapi.io/cart/${id}`);
         setCartItems(obj.filter((item) => item.id !== id));
-        console.log(id);
     };
+
+    const onAddToFavorite = (obj) => {
+        setFavorites((prev) => [...prev, obj]);
+        console.log(obj);
+    }
 
     const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value);
@@ -99,9 +104,7 @@ function App() {
                                     model={card.model}
                                     img={card.img}
                                     price={card.price}
-                                    onAddFavorite={() =>
-                                        console.log('add to favorite')
-                                    }
+                                    onAddToFavorite={onAddToFavorite}
                                     onAddCart={onAddToCart}
                                 />
                             ))}
