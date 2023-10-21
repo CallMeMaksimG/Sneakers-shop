@@ -63,10 +63,22 @@ body {
 }
 
 .cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 50px;
-  flex-wrap: wrap;
   padding-bottom: 50px;
+
+  @media(max-width: 970px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media(max-width: 725px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media(max-width: 525px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 
@@ -75,11 +87,22 @@ body {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 50px;
+
+  @media(max-width: 725px) {
+    flex-direction: column-reverse;
+    gap: 20px;
+    align-items: start;
+    padding-bottom: 30px;
+  }
 }
 
 .main__title {
   font-size: 28px;
   font-weight: 700;
+
+  @media(max-width: 725px) {
+    font-size: 22px;;
+  }
 }
 
 .search {

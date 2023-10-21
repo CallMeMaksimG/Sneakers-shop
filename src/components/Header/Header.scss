@@ -1,6 +1,7 @@
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 15px 0;
     
     ul {
@@ -12,8 +13,17 @@
             span {
                 padding-left: 10px;
                 color: #101010;
+
+                @media(max-width: 770px) {
+                  display: none;
+                }
             }
         }
+    }
+
+    @media(max-width: 600px) {
+      flex-direction: column;
+      gap: 20px;
     }
 }
 
@@ -27,6 +37,10 @@
 .header__left {
     display: flex;
     align-items: center;
+
+    @media(max-width: 600px) {
+      flex-direction: column;
+    }
   }
 
 .header__cart {
@@ -55,5 +69,11 @@
       text-transform: uppercase;
       font-size: 14px;
       color: #404040;
+    }
+
+    @media(max-width: 600px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
   }

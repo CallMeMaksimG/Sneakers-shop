@@ -13,14 +13,14 @@ function Header({ onClickCart }) {
 
             <ul className="header__right">
                 <li className="header__favorite">
-                    <img src="/img/icon/favorite.svg"></img><span>Избранное</span>
+                    <img src="/img/icon/favorite.svg" alt="Избранное"></img><span>Избранное</span>
                 </li>
                 <li className="header__cart" onClick={onClickCart}>
-                    <img src="/img/icon/cart.svg"></img>
+                    <img src="/img/icon/cart.svg" alt="Корзина"></img>
                     <span>0 руб.</span>
                 </li>
                 <li>
-                    <img src="/img/icon/account.svg"></img>
+                    <img src="/img/icon/account.svg" alt="Профиль"></img>
                     <span>Профиль</span>
                 </li>
             </ul>

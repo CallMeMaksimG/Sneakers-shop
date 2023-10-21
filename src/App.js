@@ -1,7 +1,8 @@
-import Header from './components/Header';
 import axios from 'axios';
+import { Routes, Route } from 'react-router-dom';
 import Card from './components/Card';
 import Cart from './components/Cart/index';
+import Header from './components/Header';
 import { useEffect, useState } from 'react';
 
 function App() {
