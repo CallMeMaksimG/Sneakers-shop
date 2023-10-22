@@ -1,0 +1,31 @@
+main {
+    padding-top: 40px;
+}
+
+.favorites__nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.favorites__nav-title {
+    font-size: 28px;
+    font-weight: 700;
+
+    @media(max-width: 725px) {
+        font-size: 22px;;
+      }
+}
+
+.favorites__nav-back-btn {
+    position: relative;
+    z-index: 102;
+}
+
+.favorites__items {
+    padding-top: 50px;
+
+    @media(max-width: 725px) {
+        padding-top: 30px;
+      }
+}

@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
-import Card from './components/Card';
+import { useEffect, useState } from 'react';
 import Cart from './components/Cart/index';
 import Header from './components/Header';
-import { useEffect, useState } from 'react';
+import Favorites from './pages/Favorites/Favorites';
+import Home from './pages/Home/Home';
 
 function App() {
     const [items, setItems] = useState([]);
@@ -13,16 +14,12 @@ function App() {
     const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
-        axios
-            .get('http://localhost:30001/items')
-            .then((response) => {
-                setItems(response.data);
-            });
-        axios
-            .get('http://localhost:30001/cart')
-            .then((response) => {
-                setCartItems(response.data);
-            });
+        axios.get('http://localhost:30001/items').then((response) => {
+            setItems(response.data);
+        });
+        axios.get('http://localhost:30001/cart').then((response) => {
+            setCartItems(response.data);
+        });
     }, []);
 
     const onAddToCart = (obj) => {
@@ -38,7 +35,7 @@ function App() {
     const onAddToFavorite = (obj) => {
         setFavorites((prev) => [...prev, obj]);
         console.log(obj);
-    }
+    };
 
     const onChangeSearchInput = (event) => {
         setSearchValue(event.target.value);
@@ -57,60 +54,23 @@ function App() {
             <div className="grain"></div>
             <div className="container">
                 <Header onClickCart={() => setCartOpened(true)} />
-                <main className="main">
-                    <div className="main__top">
-                        <h1 className="main__title">
-                            {searchValue
-                                ? `Поиск по запросу "${searchValue}"`
-                                : 'Все кроссовки'}
-                        </h1>
-                        <div className="search">
-                            <img
-                                className="search__icon"
-                                src="./img/icon/search.svg"
-                                alt="search"
+
+                <Routes>
+                    <Route path="/favorites" element={<Favorites />}></Route>
+                    <Route
+                        path="/"
+                        element={
+                            <Home
+                                items={items}
+                                searchValue={searchValue}
+                                setSearchValue={setSearchValue}
+                                onChangeSearchInput={onChangeSearchInput}
+                                onAddToFavorite={onAddToFavorite}
+                                onAddToCart={onAddToCart}
                             />
-                            {searchValue && (
-                                <img
-                                    onClick={() => setSearchValue('')}
-                                    className="search__clear-btn"
-                                    src="./img/icon/clear.svg"
-                                    alt="clear"
-                                />
-                            )}
-                            <input
-                                onChange={onChangeSearchInput}
-                                className="search__input"
-                                placeholder="Поиск..."
-                                value={searchValue}
-                            />
-                        </div>
-                    </div>
-                    <div className="cards">
-                        {items
-                            .filter(
-                                (item) =>
-                                    item.model
-                                        .toLowerCase()
-                                        .includes(searchValue) ||
-                                    item.brand
-                                        .toLowerCase()
-                                        .includes(searchValue.toLowerCase())
-                            )
-                            .map((card) => (
-                                <Card
-                                    key={card.id}
-                                    id={card.id}
-                                    brand={card.brand}
-                                    model={card.model}
-                                    img={card.img}
-                                    price={card.price}
-                                    onAddToFavorite={onAddToFavorite}
-                                    onAddCart={onAddToCart}
-                                />
-                            ))}
-                    </div>
-                </main>
+                        }
+                    ></Route>
+                </Routes>
             </div>
         </>
     );

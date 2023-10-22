@@ -37,6 +37,13 @@
 .header__left {
     display: flex;
     align-items: center;
+    position: relative;
+    z-index: 102;
+    cursor: pointer;
+
+    h3 {
+      color: #000;
+    }
 
     @media(max-width: 600px) {
       flex-direction: column;
