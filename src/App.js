@@ -14,24 +14,24 @@ function App() {
 
     useEffect(() => {
         axios
-            .get('https://652e65d80b8d8ddac0b14e80.mockapi.io/items')
+            .get('http://localhost:30001/items')
             .then((response) => {
                 setItems(response.data);
             });
         axios
-            .get('https://652e65d80b8d8ddac0b14e80.mockapi.io/cart')
+            .get('http://localhost:30001/cart')
             .then((response) => {
                 setCartItems(response.data);
             });
     }, []);
 
     const onAddToCart = (obj) => {
-        axios.post('https://652e65d80b8d8ddac0b14e80.mockapi.io/cart', obj);
+        axios.post('http://localhost:30001/cart', obj);
         setCartItems((prev) => [...prev, obj]);
     };
 
     const onRemoveItem = (id, obj) => {
-        axios.delete(`https://652e65d80b8d8ddac0b14e80.mockapi.io/cart/${id}`);
+        axios.delete(`http://localhost:30001/cart/${id}`);
         setCartItems(obj.filter((item) => item.id !== id));
     };
 
