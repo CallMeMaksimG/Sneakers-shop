@@ -20,6 +20,9 @@ function App() {
         axios.get('http://localhost:30001/cart').then((response) => {
             setCartItems(response.data);
         });
+        axios.get('http://localhost:30001/favorites').then((response) => {
+            setFavorites(response.data);
+        });
     }, []);
 
     const onAddToCart = (obj) => {
@@ -32,9 +35,18 @@ function App() {
         setCartItems(obj.filter((item) => item.id !== id));
     };
 
-    const onAddToFavorite = (obj) => {
-        setFavorites((prev) => [...prev, obj]);
+    const onAddToFavorite = async (obj) => {
         console.log(obj);
+        if (favorites.find((favObj) => favObj.id === obj.id)) {
+            axios.delete(`http://localhost:30001/favorites/${obj.id}`);
+            setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
+        } else {
+            const { data } = await axios.post(
+                'http://localhost:30001/favorites',
+                obj
+            );
+            setFavorites((prev) => [...prev, data]);
+        }
     };
 
     const onChangeSearchInput = (event) => {
@@ -56,7 +68,6 @@ function App() {
                 <Header onClickCart={() => setCartOpened(true)} />
 
                 <Routes>
-                    <Route path="/favorites" element={<Favorites />}></Route>
                     <Route
                         path="/"
                         element={
@@ -67,6 +78,16 @@ function App() {
                                 onChangeSearchInput={onChangeSearchInput}
                                 onAddToFavorite={onAddToFavorite}
                                 onAddToCart={onAddToCart}
+                            />
+                        }
+                    ></Route>
+                    <Route
+                        path="/favorites"
+                        element={
+                            <Favorites
+                                items={favorites}
+                                onAddToFavorite={onAddToFavorite}
+                                onAddCart={onAddToCart}
                             />
                         }
                     ></Route>

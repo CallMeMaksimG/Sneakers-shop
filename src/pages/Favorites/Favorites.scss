@@ -24,6 +24,9 @@ main {
 
 .favorites__items {
     padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 50px;
 
     @media(max-width: 725px) {
         padding-top: 30px;
