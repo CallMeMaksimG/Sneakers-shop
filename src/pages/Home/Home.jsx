@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../../components/Card';
 
-const Home = ({
+function Home({
     items,
     cartItems,
     favorites,
@@ -10,9 +10,32 @@ const Home = ({
     onChangeSearchInput,
     onAddToFavorite,
     onAddToCart,
-}) => {
+    isLoading,
+}) {
+    const renderItems = () => {
+        return (
+            isLoading
+                ? [...Array(8)]
+                : items.filter(
+                      (item) =>
+                          item.model.toLowerCase().includes(searchValue) ||
+                          item.brand
+                              .toLowerCase()
+                              .includes(searchValue.toLowerCase())
+                  )
+        ).map((card, index) => (
+            <Card
+                key={index}
+                onAddToFavorite={onAddToFavorite}
+                onAddCart={onAddToCart}
+                added={cartItems.some((obj) => obj.id === card.id)}
+                favorited={favorites.some((obj) => obj.id === card.id)}
+                loading={isLoading}
+                {...card}
+            />
+        ));
+    };
     return (
-        
         <main className="main">
             <div className="main__top">
                 <h1 className="main__title">
@@ -42,34 +65,9 @@ const Home = ({
                     />
                 </div>
             </div>
-            <div className="cards">
-                {
-                items
-                    .filter(
-                        (item) =>
-                            item.model.toLowerCase().includes(searchValue) ||
-                            item.brand
-                                .toLowerCase()
-                                .includes(searchValue.toLowerCase())
-                    )
-                    .map((card) => (
-                        
-                        <Card
-                            key={card.id}
-                            id={card.id}
-                            brand={card.brand}
-                            model={card.model}
-                            img={card.img}
-                            price={card.price}
-                            onAddToFavorite={onAddToFavorite}
-                            onAddCart={onAddToCart}
-                            added={cartItems.some((obj) => obj.id === card.id)}
-                            favorited={favorites.some((obj) => obj.id === card.id)}
-                        />
-                    ))}
-            </div>
+            <div className="cards">{renderItems()}</div>
         </main>
     );
-};
+}
 
 export default Home;

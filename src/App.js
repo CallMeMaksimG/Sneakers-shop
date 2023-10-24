@@ -12,6 +12,7 @@ function App() {
     const [favorites, setFavorites] = useState([]);
     const [cartOpened, setCartOpened] = useState(false);
     const [searchValue, setSearchValue] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
@@ -24,6 +25,9 @@ function App() {
             const itemsResponse = await axios.get(
                 'http://localhost:30001/items'
             );
+
+            setIsLoading(false);
+
             setCartItems(cartItemsResponse.data);
             setFavorites(favoritesResponse.data);
             setItems(itemsResponse.data);
@@ -103,6 +107,7 @@ function App() {
                                 onAddToFavorite={onAddToFavorite}
                                 onAddToCart={onAddToCart}
                                 favorites={favorites}
+                                isLoading={isLoading}
                             />
                         }
                     ></Route>

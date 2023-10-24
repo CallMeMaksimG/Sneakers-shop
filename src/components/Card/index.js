@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ContentLoader from 'react-content-loader';
 import './Card.scss';
 
 function Card({
@@ -11,7 +12,8 @@ function Card({
     onAddCart,
     onAddToFavorite,
     favorited = false,
-    added = false
+    added = false,
+    loading = false,
 }) {
     const [isAdded, setIsAdded] = useState(added);
     const [isFavorite, setIsFavorite] = useState(favorited);
@@ -27,38 +29,101 @@ function Card({
     };
 
     return (
-        <div className="cards__item">
-            <div className="card__item-favorit" onClick={onAddFavorite}>
-                <img
-                    onClick={onClickFavorite}
-                    src={
-                        !isFavorite
-                            ? './img/icon/heart-unliked.svg'
-                            : './img/icon/heart-like.svg'
-                    }
-                ></img>
+        <>
+            <div className="cards__item">
+                {loading ? (
+                    <ContentLoader
+                        speed={2}
+                        width={'100%'}
+                        height={'100%'}
+                        viewBox="0 0 160 265"
+                        backgroundColor="#f3f3f3"
+                        foregroundColor="#ecebeb"
+                    >
+                        <rect
+                            x="5"
+                            y="5"
+                            rx="10"
+                            ry="10"
+                            width="150"
+                            height="150"
+                        />
+                        <rect
+                            x="5"
+                            y="165"
+                            rx="5"
+                            ry="5"
+                            width="100"
+                            height="15"
+                        />
+                        <rect
+                            x="5"
+                            y="185"
+                            rx="5"
+                            ry="5"
+                            width="150"
+                            height="15"
+                        />
+                        <rect
+                            x="5"
+                            y="245"
+                            rx="5"
+                            ry="5"
+                            width="84"
+                            height="20"
+                        />
+                        <rect
+                            x="118"
+                            y="233"
+                            rx="5"
+                            ry="5"
+                            width="32"
+                            height="32"
+                        />
+                    </ContentLoader>
+                ) : (
+                    <>
+                        <div
+                            className="card__item-favorit"
+                            onClick={onAddFavorite}
+                        >
+                            <img
+                                onClick={onClickFavorite}
+                                src={
+                                    !isFavorite
+                                        ? './img/icon/heart-unliked.svg'
+                                        : './img/icon/heart-like.svg'
+                                }
+                            ></img>
+                        </div>
+                        <img src={img}></img>
+                        <p className="cards__item-brand">{brand}</p>
+                        <p className="cards__item-model">{model}</p>
+                        <div className="cards__item-bottom">
+                            <span className="cards__item-price">
+                                {price} руб.
+                            </span>
+                            <button
+                                className={
+                                    !isAdded
+                                        ? 'cards__item-btn'
+                                        : 'cards__item-btn--active'
+                                }
+                                onClick={onClickPlus}
+                            >
+                                <img
+                                    src={
+                                        !isAdded
+                                            ? './img/icon/plus.svg'
+                                            : './img/icon/check.svg'
+                                    }
+                                ></img>
+                            </button>
+                        </div>
+                    </>
+                )}
             </div>
-            <img src={img}></img>
-            <p className="cards__item-brand">{brand}</p>
-            <p className="cards__item-model">{model}</p>
-            <div className="cards__item-bottom">
-                <span className="cards__item-price">{price} руб.</span>
-                <button
-                    className={
-                        !isAdded ? 'cards__item-btn' : 'cards__item-btn--active'
-                    }
-                    onClick={onClickPlus}
-                >
-                    <img
-                        src={
-                            !isAdded
-                                ? './img/icon/plus.svg'
-                                : './img/icon/check.svg'
-                        }
-                    ></img>
-                </button>
-            </div>
-        </div>
+        </>
     );
 }
 
