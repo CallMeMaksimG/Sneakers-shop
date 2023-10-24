@@ -19,8 +19,8 @@ const Favorites = ({ onAddToFavorite, onAddToCart }) => {
                 </Link>
                 <h1 className="favorites__nav-title">Избранное</h1>
             </section>
-            <section className="favorites__items">
-                {favorites.map((card) => (
+            {favorites.length > 0 ? <section className="favorites__items">
+                { favorites.map((card) => (
                     <Card
                         key={card.id}
                         id={card.id}
@@ -33,7 +33,9 @@ const Favorites = ({ onAddToFavorite, onAddToCart }) => {
                         onAddCart={onAddToCart}
                     />
                 ))}
-            </section>
+            </section> : <h1 className="favorites__empty">Список избранного пуст</h1>}
+            
+                
         </main>
     );
 };
