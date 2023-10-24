@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Favorites from './pages/Favorites/Favorites';
 import Home from './pages/Home/Home';
 import AppContext from './context';
+import Profile from './pages/Profile/Profile';
 
 function App() {
     const [items, setItems] = useState([]);
@@ -123,6 +124,13 @@ function App() {
                                 <Favorites
                                     onAddToFavorite={onAddToFavorite}
                                     onAddCart={onAddToCart}
+                                />
+                            }
+                        ></Route>
+                        <Route
+                            path="/profile"
+                            element={
+                                <Profile
                                 />
                             }
                         ></Route>

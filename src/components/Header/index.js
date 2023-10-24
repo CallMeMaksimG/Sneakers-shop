@@ -28,10 +28,12 @@ function Header({ onClickCart }) {
                     <img src="/img/icon/cart.svg" alt="Корзина"></img>
                     <span>0 руб.</span>
                 </li>
-                <li>
+                <Link to="/profile">
+                <li className="header__profile"> 
                     <img src="/img/icon/account.svg" alt="Профиль"></img>
                     <span>Профиль</span>
                 </li>
+                </Link>
             </ul>
         </header>
     );

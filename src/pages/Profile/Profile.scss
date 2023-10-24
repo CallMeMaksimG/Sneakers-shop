@@ -1,0 +1,40 @@
+main {
+    padding-top: 40px;
+}
+
+.profile__nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.profile__nav-title {
+    font-size: 28px;
+    font-weight: 700;
+
+    @media(max-width: 725px) {
+        font-size: 22px;;
+      }
+}
+
+.profile__nav-back-btn {
+    position: relative;
+    z-index: 102;
+}
+
+.profile__items {
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 50px;
+
+    @media(max-width: 725px) {
+        padding-top: 30px;
+      }
+}
+
+.profile__empty {
+    font-size: 26px;
+    text-align: center;
+    padding-top: 80px;
+}
