@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import AppContext from '../../context';
 
 import './Favorites.scss';
 
-import React from 'react';
 import Card from '../../components/Card';
 
-const Favorites = ({ favorites, onAddToFavorite, onAddToCart }) => {
+const Favorites = ({ onAddToFavorite, onAddToCart }) => {
+    const { favorites } = useContext(AppContext);
+
     return (
         <main className="favorites">
             <section className="favorites__nav">

@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import Cart from './components/Cart/index';
 import Header from './components/Header';
 import Favorites from './pages/Favorites/Favorites';
 import Home from './pages/Home/Home';
+import AppContext from './context';
 
 function App() {
     const [items, setItems] = useState([]);
@@ -80,50 +81,55 @@ function App() {
         setSearchValue(event.target.value);
     };
 
-    return (
-        <>
-            {cartOpened && (
-                <Cart
-                    items={cartItems}
-                    addToCart={onAddToCart}
-                    onRemove={onRemoveItem}
-                    onClose={() => setCartOpened(false)}
-                />
-            )}
-            <div className="grain"></div>
-            <div className="container">
-                <Header onClickCart={() => setCartOpened(true)} />
+    const isItemAdded = (id) => {
+        return cartItems.some((obj) => obj.id === id)
+    }
 
-                <Routes>
-                    <Route
-                        path="/"
-                        element={
-                            <Home
-                                items={items}
-                                cartItems={cartItems}
-                                searchValue={searchValue}
-                                setSearchValue={setSearchValue}
-                                onChangeSearchInput={onChangeSearchInput}
-                                onAddToFavorite={onAddToFavorite}
-                                onAddToCart={onAddToCart}
-                                favorites={favorites}
-                                isLoading={isLoading}
-                            />
-                        }
-                    ></Route>
-                    <Route
-                        path="/favorites"
-                        element={
-                            <Favorites
-                                favorites={favorites}
-                                onAddToFavorite={onAddToFavorite}
-                                onAddCart={onAddToCart}
-                            />
-                        }
-                    ></Route>
-                </Routes>
-            </div>
-        </>
+    return (
+        <AppContext.Provider value={{ items, cartItems, favorites, isItemAdded }}>
+            <>
+                {cartOpened && (
+                    <Cart
+                        items={cartItems}
+                        addToCart={onAddToCart}
+                        onRemove={onRemoveItem}
+                        onClose={() => setCartOpened(false)}
+                    />
+                )}
+                <div className="grain"></div>
+                <div className="container">
+                    <Header onClickCart={() => setCartOpened(true)} />
+
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <Home
+                                    items={items}
+                                    cartItems={cartItems}
+                                    searchValue={searchValue}
+                                    setSearchValue={setSearchValue}
+                                    onChangeSearchInput={onChangeSearchInput}
+                                    onAddToFavorite={onAddToFavorite}
+                                    onAddToCart={onAddToCart}
+                                    favorites={favorites}
+                                    isLoading={isLoading}
+                                />
+                            }
+                        ></Route>
+                        <Route
+                            path="/favorites"
+                            element={
+                                <Favorites
+                                    onAddToFavorite={onAddToFavorite}
+                                    onAddCart={onAddToCart}
+                                />
+                            }
+                        ></Route>
+                    </Routes>
+                </div>
+            </>
+        </AppContext.Provider>
     );
 }
 

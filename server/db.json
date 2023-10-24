@@ -122,12 +122,21 @@
   ],
   "cart": [
     {
-      "id": 9,
-      "brand": "Nike",
-      "model": "Air Zoom Spiridon Caged 'Stussy'",
-      "img": "./img/sneakers/nikexstussy.jpg",
-      "price": 117990
+      "id": 1,
+      "brand": "New Balance",
+      "model": "990v3 x JJJJound",
+      "img": "./img/sneakers/NB990v3.jpg",
+      "price": 87990
     },
+    {
+      "id": 3,
+      "brand": "Adidas",
+      "model": "x Kith x Clarks Samba '8th Street - White'",
+      "img": "./img/sneakers/Adidas-samba-kith.jpg",
+      "price": 118990
+    }
+  ],
+  "favorites": [
     {
       "id": 11,
       "brand": "Nike",
@@ -141,57 +150,6 @@
       "model": "XT-6 GTX x Kith",
       "img": "./img/sneakers/salomonxkith.jpg",
       "price": 92899
-    },
-    {
-      "id": 1,
-      "brand": "New Balance",
-      "model": "990v3 x JJJJound",
-      "img": "./img/sneakers/NB990v3.jpg",
-      "price": 87990
-    },
-    {
-      "id": 12,
-      "brand": "Nike",
-      "model": "Zoom Road Warrior ISPA",
-      "img": "./img/sneakers/nikewarrior.jpg",
-      "price": 130990
-    }
-  ],
-  "favorites": [
-    {
-      "id": 4,
-      "brand": "Salomon",
-      "model": "XT-6 GTX x Kith",
-      "img": "./img/sneakers/salomonxkith.jpg",
-      "price": 92899
-    },
-    {
-      "id": 9,
-      "brand": "Nike",
-      "model": "Air Zoom Spiridon Caged 'Stussy'",
-      "img": "./img/sneakers/nikexstussy.jpg",
-      "price": 117990
-    },
-    {
-      "id": 3,
-      "brand": "Adidas",
-      "model": "x Kith x Clarks Samba '8th Street - White'",
-      "img": "./img/sneakers/Adidas-samba-kith.jpg",
-      "price": 118990
-    },
-    {
-      "id": 2,
-      "brand": "New Balance",
-      "model": "990v5 x Aimé Leon Dore",
-      "img": "./img/sneakers/NB990v5.jpg",
-      "price": 118990
-    },
-    {
-      "id": 14,
-      "brand": "New Balance",
-      "model": "860 v2 Green x Aimé Leon Dore",
-      "img": "./img/sneakers/nb860.jpg",
-      "price": 76990
     }
   ]
 }
