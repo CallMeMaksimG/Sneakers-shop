@@ -120,6 +120,64 @@
       "price": 55990
     }
   ],
-  "cart": [],
-  "favorites": []
+  "cart": [
+    {
+      "id": 2,
+      "brand": "New Balance",
+      "model": "990v5 x Aimé Leon Dore",
+      "img": "./img/sneakers/NB990v5.jpg",
+      "price": 118990
+    },
+    {
+      "id": 1,
+      "brand": "New Balance",
+      "model": "990v3 x JJJJound",
+      "img": "./img/sneakers/NB990v3.jpg",
+      "price": 87990
+    },
+    {
+      "id": 7,
+      "brand": "Nike",
+      "model": "Air Max 270 Cactus Trails x Travis Scott",
+      "img": "./img/sneakers/niketravisscott.jpg",
+      "price": 859990
+    },
+    {
+      "id": 9,
+      "brand": "Nike",
+      "model": "Air Zoom Spiridon Caged 'Stussy'",
+      "img": "./img/sneakers/nikexstussy.jpg",
+      "price": 117990
+    }
+  ],
+  "favorites": [
+    {
+      "id": 2,
+      "brand": "New Balance",
+      "model": "990v5 x Aimé Leon Dore",
+      "img": "./img/sneakers/NB990v5.jpg",
+      "price": 118990
+    },
+    {
+      "id": 1,
+      "brand": "New Balance",
+      "model": "990v3 x JJJJound",
+      "img": "./img/sneakers/NB990v3.jpg",
+      "price": 87990
+    },
+    {
+      "id": 4,
+      "brand": "Salomon",
+      "model": "XT-6 GTX x Kith",
+      "img": "./img/sneakers/salomonxkith.jpg",
+      "price": 92899
+    },
+    {
+      "id": 9,
+      "brand": "Nike",
+      "model": "Air Zoom Spiridon Caged 'Stussy'",
+      "img": "./img/sneakers/nikexstussy.jpg",
+      "price": 117990
+    }
+  ]
 }

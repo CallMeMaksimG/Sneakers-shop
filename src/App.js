@@ -14,20 +14,38 @@ function App() {
     const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
-        axios.get('http://localhost:30001/items').then((response) => {
-            setItems(response.data);
-        });
-        axios.get('http://localhost:30001/cart').then((response) => {
-            setCartItems(response.data);
-        });
-        axios.get('http://localhost:30001/favorites').then((response) => {
-            setFavorites(response.data);
-        });
+        async function fetchData() {
+            const cartItemsResponse = await axios.get(
+                'http://localhost:30001/cart'
+            );
+            const favoritesResponse = await axios.get(
+                'http://localhost:30001/favorites'
+            );
+            const itemsResponse = await axios.get(
+                'http://localhost:30001/items'
+            );
+            setCartItems(cartItemsResponse.data);
+            setFavorites(favoritesResponse.data);
+            setItems(itemsResponse.data);
+        }
+
+        fetchData();
     }, []);
 
     const onAddToCart = (obj) => {
-        axios.post('http://localhost:30001/cart', obj);
-        setCartItems((prev) => [...prev, obj]);
+        try {
+            if (cartItems.find((item) => item.id === obj.id)) {
+                axios.delete(`http://localhost:30001/cart/${obj.id}`);
+                setCartItems((prev) =>
+                    prev.filter((item) => item.id !== obj.id)
+                );
+            } else {
+                axios.post('http://localhost:30001/cart', obj);
+                setCartItems((prev) => [...prev, obj]);
+            }
+        } catch (error) {
+            alert('Не удалось добавить в корзину');
+        }
     };
 
     const onRemoveItem = (id, obj) => {
@@ -36,16 +54,21 @@ function App() {
     };
 
     const onAddToFavorite = async (obj) => {
-        console.log(obj);
-        if (favorites.find((favObj) => favObj.id === obj.id)) {
-            axios.delete(`http://localhost:30001/favorites/${obj.id}`);
-            setFavorites((prev) => prev.filter((item) => item.id !== obj.id));
-        } else {
-            const { data } = await axios.post(
-                'http://localhost:30001/favorites',
-                obj
-            );
-            setFavorites((prev) => [...prev, data]);
+        try {
+            if (favorites.find((favObj) => favObj.id === obj.id)) {
+                axios.delete(`http://localhost:30001/favorites/${obj.id}`);
+                setFavorites((prev) =>
+                    prev.filter((item) => item.id !== obj.id)
+                );
+            } else {
+                const { data } = await axios.post(
+                    'http://localhost:30001/favorites',
+                    obj
+                );
+                setFavorites((prev) => [...prev, data]);
+            }
+        } catch (error) {
+            alert('Не удалось добавить в избранное');
         }
     };
 
@@ -73,11 +96,13 @@ function App() {
                         element={
                             <Home
                                 items={items}
+                                cartItems={cartItems}
                                 searchValue={searchValue}
                                 setSearchValue={setSearchValue}
                                 onChangeSearchInput={onChangeSearchInput}
                                 onAddToFavorite={onAddToFavorite}
                                 onAddToCart={onAddToCart}
+                                favorites={favorites}
                             />
                         }
                     ></Route>
@@ -85,7 +110,7 @@ function App() {
                         path="/favorites"
                         element={
                             <Favorites
-                                items={favorites}
+                                favorites={favorites}
                                 onAddToFavorite={onAddToFavorite}
                                 onAddCart={onAddToCart}
                             />

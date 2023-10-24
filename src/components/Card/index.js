@@ -1,8 +1,19 @@
 import { useState } from 'react';
 import './Card.scss';
 
-function Card({ id, brand, model, img, price, onAddFavorite, onAddCart, onAddToFavorite, favorited = false}) {
-    const [isAdded, setIsAdded] = useState(false);
+function Card({
+    id,
+    brand,
+    model,
+    img,
+    price,
+    onAddFavorite,
+    onAddCart,
+    onAddToFavorite,
+    favorited = false,
+    added = false
+}) {
+    const [isAdded, setIsAdded] = useState(added);
     const [isFavorite, setIsFavorite] = useState(favorited);
 
     const onClickPlus = () => {
@@ -13,12 +24,19 @@ function Card({ id, brand, model, img, price, onAddFavorite, onAddCart, onAddToF
     const onClickFavorite = () => {
         onAddToFavorite({ id, brand, model, img, price });
         setIsFavorite(!isFavorite);
-    }
+    };
 
     return (
         <div className="cards__item">
             <div className="card__item-favorit" onClick={onAddFavorite}>
-                <img onClick={onClickFavorite} src={!isFavorite ? './img/icon/heart-unliked.svg' : './img/icon/heart-like.svg'}></img>
+                <img
+                    onClick={onClickFavorite}
+                    src={
+                        !isFavorite
+                            ? './img/icon/heart-unliked.svg'
+                            : './img/icon/heart-like.svg'
+                    }
+                ></img>
             </div>
             <img src={img}></img>
             <p className="cards__item-brand">{brand}</p>

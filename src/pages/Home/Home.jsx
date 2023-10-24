@@ -3,6 +3,8 @@ import Card from '../../components/Card';
 
 const Home = ({
     items,
+    cartItems,
+    favorites,
     searchValue,
     setSearchValue,
     onChangeSearchInput,
@@ -10,6 +12,7 @@ const Home = ({
     onAddToCart,
 }) => {
     return (
+        
         <main className="main">
             <div className="main__top">
                 <h1 className="main__title">
@@ -40,7 +43,8 @@ const Home = ({
                 </div>
             </div>
             <div className="cards">
-                {items
+                {
+                items
                     .filter(
                         (item) =>
                             item.model.toLowerCase().includes(searchValue) ||
@@ -49,6 +53,7 @@ const Home = ({
                                 .includes(searchValue.toLowerCase())
                     )
                     .map((card) => (
+                        
                         <Card
                             key={card.id}
                             id={card.id}
@@ -58,6 +63,8 @@ const Home = ({
                             price={card.price}
                             onAddToFavorite={onAddToFavorite}
                             onAddCart={onAddToCart}
+                            added={cartItems.some((obj) => obj.id === card.id)}
+                            favorited={favorites.some((obj) => obj.id === card.id)}
                         />
                     ))}
             </div>

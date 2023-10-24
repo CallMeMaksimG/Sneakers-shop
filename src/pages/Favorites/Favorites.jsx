@@ -5,7 +5,7 @@ import './Favorites.scss';
 import React from 'react';
 import Card from '../../components/Card';
 
-const Favorites = ({ items, onAddToFavorite, onAddToCart }) => {
+const Favorites = ({ favorites, onAddToFavorite, onAddToCart }) => {
     return (
         <main className="favorites">
             <section className="favorites__nav">
@@ -17,7 +17,7 @@ const Favorites = ({ items, onAddToFavorite, onAddToCart }) => {
                 <h1 className="favorites__nav-title">Избранное</h1>
             </section>
             <section className="favorites__items">
-                {items.map((card) => (
+                {favorites.map((card) => (
                     <Card
                         key={card.id}
                         id={card.id}
