@@ -81,8 +81,8 @@ function App() {
         setSearchValue(event.target.value);
     };
 
-    const isItemAdded = (id) => {
-        return cartItems.some((obj) => obj.id === id)
+    const isItemAdded = (obj, id) => {
+        return obj.some((obj) => obj.id === id)
     }
 
     return (

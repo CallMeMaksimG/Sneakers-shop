@@ -15,15 +15,11 @@ function Card({
     favorited = false,
     loading = false,
 }) {
-
-    const {isItemAdded} = useContext(AppContext)
+    const { cartItems,favorites, isItemAdded } = useContext(AppContext);
     const [isFavorite, setIsFavorite] = useState(favorited);
-
-    console.log(model, isItemAdded(id))
 
     const onClickPlus = () => {
         onAddCart({ id, brand, model, img, price });
-        
     };
 
     const onClickFavorite = () => {
@@ -93,9 +89,9 @@ function Card({
                             <img
                                 onClick={onClickFavorite}
                                 src={
-                                    !isFavorite
-                                        ? './img/icon/heart-unliked.svg'
-                                        : './img/icon/heart-like.svg'
+                                    isItemAdded(favorites, id)
+                                        ? './img/icon/heart-like.svg'
+                                        : './img/icon/heart-unliked.svg'
                                 }
                             ></img>
                         </div>
@@ -108,16 +104,15 @@ function Card({
                             </span>
                             <button
                                 className={
-                                    isItemAdded(id)
+                                    isItemAdded(cartItems, id)
                                         ? 'cards__item-btn--active'
                                         : 'cards__item-btn'
-                                        
                                 }
                                 onClick={onClickPlus}
                             >
                                 <img
                                     src={
-                                        isItemAdded(id)
+                                        isItemAdded(cartItems, id)
                                             ? './img/icon/check.svg'
                                             : './img/icon/plus.svg'
                                     }
