@@ -129,7 +129,7 @@
     z-index: 2;
   }
 
-.cart__cart-empty-wrapper {
+.cart__cart-info-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -138,18 +138,18 @@
   transform: translateY(-20%);
 }
 
-.cart__cart-empty {
+.cart__cart-info {
   margin-top: 100px;
   text-align: center;
   font-size: 20px;
   color:#606060;
 }
 
-.cart__cart-empty-text {
+.cart__cart-info-text {
   margin-bottom: 30px;
 }
 
-.cart__cart-empty-btn {
+.cart__cart-info-btn {
   padding: 10px 25px;
   background: #bcbcbc;
   color: black;

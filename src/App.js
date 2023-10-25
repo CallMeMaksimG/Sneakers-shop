@@ -87,14 +87,15 @@ function App() {
     }
 
     return (
-        <AppContext.Provider value={{ items, cartItems, favorites, isItemAdded }}>
+        <AppContext.Provider value={{ items, cartItems, favorites, isItemAdded, setCartOpened }}>
             <>
                 {cartOpened && (
                     <Cart
-                        items={cartItems}
+                        cartItems={cartItems}
                         addToCart={onAddToCart}
                         onRemove={onRemoveItem}
                         onClose={() => setCartOpened(false)}
+                        setCartItems={setCartItems}
                     />
                 )}
                 <div className="grain"></div>

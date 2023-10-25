@@ -1,7 +1,17 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import AppContext from '../../context';
 import './Cart.scss';
+import Info from '../Info.jsx/Info';
 
-function Cart({ onClose, items = [], onRemove }) {
+function Cart({ onClose, cartItems = [], setCartItems, onRemove }) {
+    const { setCartOpened } = useContext(AppContext);
+    const [isOrderComplete, setIsOrderComplete] = useState(false);
+
+    const onClickOrder = () => {
+        setIsOrderComplete(true);
+        setCartItems([]);
+    };
+
     return (
         <div className="overlay">
             <div className="cart">
@@ -13,10 +23,11 @@ function Cart({ onClose, items = [], onRemove }) {
                     ></img>
                 </div>
                 <h2>Корзина</h2>
-                {items.length > 0 ? (
+
+                {cartItems.length > 0 ? (
                     <div className="cart__items-wrapper">
                         <div className="cart__items">
-                            {items.map((item) => {
+                            {cartItems.map((item) => {
                                 return (
                                     <div key={item.id} className="cart__item">
                                         <img
@@ -32,7 +43,7 @@ function Cart({ onClose, items = [], onRemove }) {
                                         <button
                                             className="cart__item-delete-btn"
                                             onClick={() =>
-                                                onRemove(item.id, items)
+                                                onRemove(item.id, cartItems)
                                             }
                                         >
                                             <img src="./img/icon/delete.svg"></img>
@@ -45,33 +56,24 @@ function Cart({ onClose, items = [], onRemove }) {
                             <div className="cart__total-price">
                                 <span>Итог</span>
                                 <span className="cart__price">
-                                    {items.reduce((acc, curentValue) => {
+                                    {cartItems.reduce((acc, curentValue) => {
                                         return acc + curentValue.price;
                                     }, 0)}{' '}
                                     руб.
                                 </span>
                             </div>
                             <div className="cart__bottom-btn-wrapper">
-                                <button className="cart__bottom-btn">
+                                <button
+                                    onClick={onClickOrder}
+                                    className="cart__bottom-btn"
+                                >
                                     Оформить заказ
                                 </button>
                             </div>
                         </div>{' '}
                     </div>
                 ) : (
-                    <div className="cart__cart-empty-wrapper">
-                        <div className="cart__cart-empty">
-                            <p className="cart__cart-empty-text">
-                                Ваша корзина пуста
-                            </p>
-                            <button
-                                onClick={onClose}
-                                className="cart__cart-empty-btn"
-                            >
-                                Перейти в каталог
-                            </button>
-                        </div>
-                    </div>
+                    <Info text={isOrderComplete ? 'Заказ успешно оформлен!' : 'Ваша корзина пуста'}/>
                 )}
             </div>
         </div>
