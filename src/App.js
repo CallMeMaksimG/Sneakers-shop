@@ -83,11 +83,13 @@ function App() {
     };
 
     const isItemAdded = (obj, id) => {
-        return obj.some((obj) => obj.id === id)
-    }
+        return obj.some((obj) => obj.id === id);
+    };
 
     return (
-        <AppContext.Provider value={{ items, cartItems, favorites, isItemAdded, setCartOpened }}>
+        <AppContext.Provider
+            value={{ items, cartItems, favorites, isItemAdded, setCartOpened }}
+        >
             <>
                 {cartOpened && (
                     <Cart
@@ -128,13 +130,7 @@ function App() {
                                 />
                             }
                         ></Route>
-                        <Route
-                            path="/profile"
-                            element={
-                                <Profile
-                                />
-                            }
-                        ></Route>
+                        <Route path="/profile" element={<Profile />}></Route>
                     </Routes>
                 </div>
             </>

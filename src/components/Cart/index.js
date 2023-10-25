@@ -19,6 +19,10 @@ function Cart({ onClose, items = [], setCartItems, onRemove }) {
             setOrderId(data.id);
             setIsOrderComplete(true);
             setCartItems([]);
+
+            cartItems.forEach((item) => {
+                axios.delete('http://localhost:30001/cart/' + item.id);
+            });
         } catch (error) {
             alert('Не удалось создать заказ');
         }
@@ -90,7 +94,7 @@ function Cart({ onClose, items = [], setCartItems, onRemove }) {
                     <Info
                         description={
                             isOrderComplete
-                                ? `Номер заказа - #${orderId} в ближайшее время с Вами свяжутся для подтверждения заказа`
+                                ? `Номер заказа - #${orderId}. В ближайшее время с Вами свяжутся для подтверждения заказа`
                                 : ''
                         }
                         text={

@@ -119,6 +119,11 @@
     &:hover {
       opacity: .7;
     }
+
+    &:disabled {
+      background: #d7d7d7;
+      cursor: default;
+    }
   }
   
   .cart__close {
@@ -159,6 +164,7 @@
   &:hover {
     opacity: .7;
   }
+
 }
 
 .cart__cart-description {
