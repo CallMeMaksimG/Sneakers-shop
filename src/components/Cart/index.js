@@ -1,15 +1,28 @@
 import { useContext, useState } from 'react';
+import axios from 'axios';
 import AppContext from '../../context';
-import './Cart.scss';
 import Info from '../Info.jsx/Info';
+import './Cart.scss';
 
-function Cart({ onClose, cartItems = [], setCartItems, onRemove }) {
-    const { setCartOpened } = useContext(AppContext);
+function Cart({ onClose, items = [], setCartItems, onRemove }) {
+    const { cartItems, setCartOpened } = useContext(AppContext);
+    const [orderId, setOrderId] = useState(null);
     const [isOrderComplete, setIsOrderComplete] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    const onClickOrder = () => {
-        setIsOrderComplete(true);
-        setCartItems([]);
+    const onClickOrder = async () => {
+        try {
+            setIsLoading(true);
+            const { data } = await axios.post('http://localhost:30001/orders', {
+                items: cartItems,
+            });
+            setOrderId(data.id);
+            setIsOrderComplete(true);
+            setCartItems([]);
+        } catch (error) {
+            alert('Не удалось создать заказ');
+        }
+        setIsLoading(false);
     };
 
     return (
@@ -24,7 +37,7 @@ function Cart({ onClose, cartItems = [], setCartItems, onRemove }) {
                 </div>
                 <h2>Корзина</h2>
 
-                {cartItems.length > 0 ? (
+                {items.length > 0 ? (
                     <div className="cart__items-wrapper">
                         <div className="cart__items">
                             {cartItems.map((item) => {
@@ -43,7 +56,7 @@ function Cart({ onClose, cartItems = [], setCartItems, onRemove }) {
                                         <button
                                             className="cart__item-delete-btn"
                                             onClick={() =>
-                                                onRemove(item.id, cartItems)
+                                                onRemove(item.id, items)
                                             }
                                         >
                                             <img src="./img/icon/delete.svg"></img>
@@ -56,7 +69,7 @@ function Cart({ onClose, cartItems = [], setCartItems, onRemove }) {
                             <div className="cart__total-price">
                                 <span>Итог</span>
                                 <span className="cart__price">
-                                    {cartItems.reduce((acc, curentValue) => {
+                                    {items.reduce((acc, curentValue) => {
                                         return acc + curentValue.price;
                                     }, 0)}{' '}
                                     руб.
@@ -64,6 +77,7 @@ function Cart({ onClose, cartItems = [], setCartItems, onRemove }) {
                             </div>
                             <div className="cart__bottom-btn-wrapper">
                                 <button
+                                    disabled={isLoading}
                                     onClick={onClickOrder}
                                     className="cart__bottom-btn"
                                 >
@@ -73,7 +87,18 @@ function Cart({ onClose, cartItems = [], setCartItems, onRemove }) {
                         </div>{' '}
                     </div>
                 ) : (
-                    <Info text={isOrderComplete ? 'Заказ успешно оформлен!' : 'Ваша корзина пуста'}/>
+                    <Info
+                        description={
+                            isOrderComplete
+                                ? `Номер заказа - #${orderId} в ближайшее время с Вами свяжутся для подтверждения заказа`
+                                : ''
+                        }
+                        text={
+                            isOrderComplete
+                                ? 'Заказ успешно оформлен!'
+                                : 'Ваша корзина пуста'
+                        }
+                    />
                 )}
             </div>
         </div>

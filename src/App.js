@@ -91,7 +91,7 @@ function App() {
             <>
                 {cartOpened && (
                     <Cart
-                        cartItems={cartItems}
+                        items={cartItems}
                         addToCart={onAddToCart}
                         onRemove={onRemoveItem}
                         onClose={() => setCartOpened(false)}
