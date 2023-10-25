@@ -121,7 +121,29 @@
     }
   ],
   "cart": [],
-  "favorites": [],
+  "favorites": [
+    {
+      "id": 1,
+      "brand": "New Balance",
+      "model": "990v3 x JJJJound",
+      "img": "./img/sneakers/NB990v3.jpg",
+      "price": 87990
+    },
+    {
+      "id": 3,
+      "brand": "Adidas",
+      "model": "x Kith x Clarks Samba '8th Street - White'",
+      "img": "./img/sneakers/Adidas-samba-kith.jpg",
+      "price": 118990
+    },
+    {
+      "id": 6,
+      "brand": "Nike",
+      "model": "Dunk SB Low Pro QS x Parra",
+      "img": "./img/sneakers/nikexparra.jpg",
+      "price": 1259900
+    }
+  ],
   "orders": [
     {
       "items": [
