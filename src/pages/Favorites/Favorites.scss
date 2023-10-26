@@ -27,10 +27,24 @@ main {
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 50px;
+    padding-bottom: 50px;
 
     @media(max-width: 725px) {
-        padding-top: 30px;
+        
       }
+
+    @media(max-width: 970px) {
+    grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media(max-width: 725px) {
+        grid-template-columns: repeat(2, 1fr);
+        padding-top: 30px;
+    }
+
+    @media(max-width: 525px) {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 .favorites__empty {
