@@ -17,7 +17,7 @@ const Favorites = ({ onAddToFavorite, onAddToCart }) => {
                         <img src="../../../img/icon/back.svg" alt="Назад" />
                     </button>
                 </Link>
-                <h1 className="favorites__nav-title">Избранное</h1>
+                <h1 className="main__title">Избранное</h1>
             </section>
             {favorites.length > 0 ? <section className="favorites__items">
                 { favorites.map((card) => (

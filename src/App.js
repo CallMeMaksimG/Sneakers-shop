@@ -103,10 +103,9 @@ function App() {
                 )}
 
                 <Grain />
-                
+
                 <div className="container">
                     <Header onClickCart={() => setCartOpened(true)} />
-
                     <Routes>
                         <Route
                             path="/"

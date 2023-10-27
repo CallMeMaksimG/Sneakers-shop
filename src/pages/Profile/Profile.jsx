@@ -10,7 +10,7 @@ function Profile() {
                         <img src="../../../img/icon/back.svg" alt="Назад" />
                     </button>
                 </Link>
-                <h1 className="profile__nav-title">Профиль</h1>
+                <h1 className="main__title">Профиль</h1>
             </section>
         </main>
     );

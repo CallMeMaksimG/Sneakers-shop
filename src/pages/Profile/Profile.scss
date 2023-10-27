@@ -8,15 +8,6 @@ main {
     gap: 30px;
 }
 
-.profile__nav-title {
-    font-size: 28px;
-    font-weight: 700;
-
-    @media(max-width: 725px) {
-        font-size: 22px;;
-      }
-}
-
 .profile__nav-back-btn {
     position: relative;
     z-index: 102;
