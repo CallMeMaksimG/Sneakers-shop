@@ -39,6 +39,10 @@ function App() {
         fetchData();
     }, []);
 
+    const openedCart = () => {
+        setCartOpened(true);
+    };
+
     const onAddToCart = (obj) => {
         try {
             if (cartItems.find((item) => item.id === obj.id)) {
@@ -92,6 +96,9 @@ function App() {
             value={{ items, cartItems, favorites, isItemAdded, setCartOpened }}
         >
             <>
+                {cartOpened
+                    ? (document.body.style.overflow = 'hidden')
+                    : (document.body.style.overflow = '')}
                 {cartOpened && (
                     <Cart
                         items={cartItems}
@@ -105,7 +112,7 @@ function App() {
                 <Grain />
 
                 <div className="container">
-                    <Header onClickCart={() => setCartOpened(true)} />
+                    <Header onClickCart={openedCart} />
                     <Routes>
                         <Route
                             path="/"
