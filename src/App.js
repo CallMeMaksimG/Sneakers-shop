@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { Routes, Route } from 'react-router-dom';
 import { createContext, useEffect, useState } from 'react';
-import Cart from './components/Cart/index';
 import Header from './components/Header';
+import Grain from './components/Grain';
+import Cart from './components/Cart/index';
 import Favorites from './pages/Favorites/Favorites';
 import Home from './pages/Home/Home';
 import AppContext from './context';
@@ -100,7 +101,9 @@ function App() {
                         setCartItems={setCartItems}
                     />
                 )}
-                <div className="grain"></div>
+
+                <Grain />
+                
                 <div className="container">
                     <Header onClickCart={() => setCartOpened(true)} />
 
