@@ -1,6 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import queryString from 'query-string';
 import Card from '../../components/Card';
 import AppContext from '../../context';
+import { useLocation } from 'react-router-dom';
+
+const SORT_KEYS = ['price'];
+function sortSneakers(items, key) {
+    const sortedItems = [...items];
+
+    if (!key || !SORT_KEYS.includes(key)) {
+        return sortedItems;
+    }
+    // console.log(key + 'key')
+    sortedItems.sort((a, b) => a[key] - b[key]);
+    // console.log(sortedItems)
+    return sortedItems;
+}
 
 function Home({
     items,
@@ -10,14 +25,34 @@ function Home({
     onChangeSearchInput,
     onAddToFavorite,
     onAddToCart,
-    isLoading,
+    isLoading
 }) {
+
+    const location = useLocation();
+    const query = queryString.parse(location.search);
+    const [sortKey, setSortKey] = useState(query.sort);
+    console.log(sortKey)
+    console.log()
+    const [sortedItems, setSortedItems] = useState(
+        sortSneakers(items, sortKey)
+    );
+
+    useEffect(() => {
+    if (!sortKey) {
+        setSortKey();
+        setSortedItems([...items]);
+    }
+    setSortedItems(sortSneakers(items, sortKey));
+    }, [items, sortKey]);
+    
     const { isItemAdded } = useContext(AppContext);
     const renderItems = () => {
+        console.log(sortedItems)
         return (
             isLoading
                 ? [...Array(8)]
-                : items.filter(
+                : 
+                sortedItems.filter(
                       (item) =>
                           item.model.toLowerCase().includes(searchValue) ||
                           item.brand
@@ -46,6 +81,10 @@ function Home({
             }
         });
     };
+
+   
+
+    
 
     return (
         <main className="main">
@@ -101,9 +140,9 @@ function Home({
                     }
                 >
                     <ul className="sorted__list">
-                        <li>По умолчанию</li>
-                        <li>По возрастанию цены</li>
-                        <li>По убыванию цены</li>
+                        <li data-id='1' className='sorted__list-item'>По умолчанию</li>
+                        <li data-id='2' className='sorted__list-item'>По возрастанию цены</li>
+                        <li data-id='3' className='sorted__list-item'>По убыванию цены</li>
                     </ul>
                 </div>
             </div>
