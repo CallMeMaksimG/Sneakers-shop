@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Card from '../../components/Card';
 import AppContext from '../../context';
 
@@ -35,6 +35,18 @@ function Home({
             />
         ));
     };
+
+    const [sortOpened, setSortOpened] = useState(false);
+
+    const onClickSortBtn = () => {
+        !sortOpened ? setSortOpened(true) : setSortOpened(false);
+        document.addEventListener('click', function (event) {
+            if (event.target.className !== 'sorted__btn') {
+                setSortOpened(false);
+            }
+        });
+    };
+
     return (
         <main className="main">
             <div className="main__top">
@@ -63,6 +75,36 @@ function Home({
                         placeholder="Поиск..."
                         value={searchValue}
                     />
+                </div>
+            </div>
+            <div
+                className={!sortOpened ? 'sorted' : 'sorted sorted--open'}
+                onClick={onClickSortBtn}
+            >
+                <div className="sorted__btn">
+                    <span>Сортировка</span>{' '}
+                    <img
+                        className={
+                            !sortOpened
+                                ? 'sorted__btn-icon'
+                                : 'sorted__btn-icon sorted__btn-icon--open'
+                        }
+                        src="./img/icon/arrow-down.svg"
+                        alt="arrow-down"
+                    />
+                </div>
+                <div
+                    className={
+                        !sortOpened
+                            ? 'sorted__dropdown'
+                            : 'sorted__dropdown sorted__dropdown--open'
+                    }
+                >
+                    <ul className="sorted__list">
+                        <li>По умолчанию</li>
+                        <li>По возрастанию цены</li>
+                        <li>По убыванию цены</li>
+                    </ul>
                 </div>
             </div>
             <div className="cards">{renderItems()}</div>
