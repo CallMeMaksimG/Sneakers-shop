@@ -11,9 +11,7 @@ function sortSneakers(items, key) {
     if (!key || !SORT_KEYS.includes(key)) {
         return sortedItems;
     }
-    // console.log(key + 'key')
     sortedItems.sort((a, b) => a[key] - b[key]);
-    // console.log(sortedItems)
     return sortedItems;
 }
 
@@ -25,34 +23,36 @@ function Home({
     onChangeSearchInput,
     onAddToFavorite,
     onAddToCart,
-    isLoading
+    isLoading,
 }) {
-
     const location = useLocation();
     const query = queryString.parse(location.search);
     const [sortKey, setSortKey] = useState(query.sort);
-    console.log(sortKey)
-    console.log()
     const [sortedItems, setSortedItems] = useState(
         sortSneakers(items, sortKey)
     );
 
     useEffect(() => {
-    if (!sortKey) {
-        setSortKey();
-        setSortedItems([...items]);
-    }
-    setSortedItems(sortSneakers(items, sortKey));
+        if (!sortKey) {
+            setSortKey();
+            setSortedItems([...items]);
+        }
+        setSortedItems(sortSneakers(items, sortKey));
     }, [items, sortKey]);
-    
+
+    const [dropdownSortItem, setDropdownSortItem] = useState('Сортировка');
+
+    const onClickDropdownItem = (event) => {
+        const dropdownItemText = event.target.innerText;
+        setDropdownSortItem(dropdownItemText);
+    }
+
     const { isItemAdded } = useContext(AppContext);
     const renderItems = () => {
-        console.log(sortedItems)
         return (
             isLoading
                 ? [...Array(8)]
-                : 
-                sortedItems.filter(
+                : sortedItems.filter(
                       (item) =>
                           item.model.toLowerCase().includes(searchValue) ||
                           item.brand
@@ -81,10 +81,6 @@ function Home({
             }
         });
     };
-
-   
-
-    
 
     return (
         <main className="main">
@@ -121,7 +117,7 @@ function Home({
                 onClick={onClickSortBtn}
             >
                 <div className="sorted__btn">
-                    <span>Сортировка</span>{' '}
+                    <span>{dropdownSortItem}</span>{' '}
                     <img
                         className={
                             !sortOpened
@@ -140,9 +136,15 @@ function Home({
                     }
                 >
                     <ul className="sorted__list">
-                        <li data-id='1' className='sorted__list-item'>По умолчанию</li>
-                        <li data-id='2' className='sorted__list-item'>По возрастанию цены</li>
-                        <li data-id='3' className='sorted__list-item'>По убыванию цены</li>
+                        <li data-id="1" className="sorted__list-item" onClick={onClickDropdownItem}>
+                            По умолчанию
+                        </li>
+                        <li data-id="2" className="sorted__list-item" onClick={onClickDropdownItem}>
+                            По возрастанию цены
+                        </li>
+                        <li data-id="3" className="sorted__list-item" onClick={onClickDropdownItem}>
+                            По убыванию цены
+                        </li>
                     </ul>
                 </div>
             </div>

@@ -19,23 +19,25 @@ const Favorites = ({ onAddToFavorite, onAddToCart }) => {
                 </Link>
                 <h1 className="main__title">Избранное</h1>
             </section>
-            {favorites.length > 0 ? <section className="favorites__items">
-                { favorites.map((card) => (
-                    <Card
-                        key={card.id}
-                        id={card.id}
-                        brand={card.brand}
-                        model={card.model}
-                        img={card.img}
-                        price={card.price}
-                        favorited={true}
-                        onAddToFavorite={onAddToFavorite}
-                        onAddCart={onAddToCart}
-                    />
-                ))}
-            </section> : <h1 className="favorites__empty">Список избранного пуст</h1>}
-            
-                
+            {favorites.length > 0 ? (
+                <section className="favorites__items">
+                    {favorites.map((card) => (
+                        <Card
+                            key={card.id}
+                            id={card.id}
+                            brand={card.brand}
+                            model={card.model}
+                            img={card.img}
+                            price={card.price}
+                            favorited={true}
+                            onAddToFavorite={onAddToFavorite}
+                            onAddCart={onAddToCart}
+                        />
+                    ))}
+                </section>
+            ) : (
+                <h1 className="favorites__empty">Список избранного пуст</h1>
+            )}
         </main>
     );
 };

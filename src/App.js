@@ -91,29 +91,10 @@ function App() {
     const isItemAdded = (obj, id) => {
         return obj.some((obj) => obj.id === id);
     };
-    
-    function sortSneakers(items, key) {
-        const sortedItems = [...items];
-
-        // console.log(key + 'key')
-        sortedItems.sort((a, b) => a[key] - b[key]);
-        console.log(sortedItems)
-        return sortedItems;
-    }
-
-
-    const location = useLocation();
-    const query = queryString.parse(location.search);
-    const [sortKey, setSortKey] = useState(query.sort);
-    console.log(sortKey)
-    console.log()
-    const [sortedItems, setSortedItems] = useState(
-        sortSneakers(items, sortKey)
-    );
 
     return (
         <AppContext.Provider
-            value={{ items, cartItems, favorites, isItemAdded, setCartOpened, sortedItems }}
+            value={{ items, cartItems, favorites, isItemAdded, setCartOpened }}
         >
             <>
                 {cartOpened
@@ -147,7 +128,6 @@ function App() {
                                     onAddToCart={onAddToCart}
                                     favorites={favorites}
                                     isLoading={isLoading}
-                                    sortedItems={sortedItems}
                                 />
                             }
                         ></Route>

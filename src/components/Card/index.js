@@ -15,7 +15,7 @@ function Card({
     favorited = false,
     loading = false,
 }) {
-    const { cartItems,favorites, isItemAdded } = useContext(AppContext);
+    const { cartItems, favorites, isItemAdded } = useContext(AppContext);
     const [isFavorite, setIsFavorite] = useState(favorited);
 
     const onClickPlus = () => {
