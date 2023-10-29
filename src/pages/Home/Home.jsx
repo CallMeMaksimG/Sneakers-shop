@@ -4,14 +4,17 @@ import Card from '../../components/Card';
 import AppContext from '../../context';
 import { useLocation } from 'react-router-dom';
 
-const SORT_KEYS = ['price'];
+const SORT_KEYS = ['priceASC', 'priceDESC'];
 function sortSneakers(items, key) {
     const sortedItems = [...items];
-
     if (!key || !SORT_KEYS.includes(key)) {
         return sortedItems;
     }
-    sortedItems.sort((a, b) => a[key] - b[key]);
+    if (key === 'priceASC') {
+      sortedItems.sort((a, b) => a.price - b.price);
+    } else if (key === 'priceDESC'){
+       sortedItems.sort((a, b) => b.price - a.price);
+    }
     return sortedItems;
 }
 
@@ -28,6 +31,7 @@ function Home({
     const location = useLocation();
     const query = queryString.parse(location.search);
     const [sortKey, setSortKey] = useState(query.sort);
+    
     const [sortedItems, setSortedItems] = useState(
         sortSneakers(items, sortKey)
     );
@@ -44,9 +48,20 @@ function Home({
 
     const onClickDropdownItem = (event) => {
         const dropdownItemText = event.target.innerText;
+        const idSortMethod = event.target.dataset.id;
+        console.log(idSortMethod)
         setDropdownSortItem(dropdownItemText);
+        if (idSortMethod == 1) {
+            setSortKey();
+            
+        } else if (idSortMethod == 2) {
+            setSortKey('priceASC');
+        } else if (idSortMethod == 3) {
+            setSortKey('priceDESC');
+        }
+        sortSneakers(items, sortKey);
+        
     }
-
     const { isItemAdded } = useContext(AppContext);
     const renderItems = () => {
         return (
