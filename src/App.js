@@ -148,7 +148,7 @@ function App() {
                             element={
                                 <Favorites
                                     onAddToFavorite={onAddToFavorite}
-                                    onAddCart={onAddToCart}
+                                    onAddToCart={onAddToCart}
                                 />
                             }
                         ></Route>

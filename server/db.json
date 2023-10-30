@@ -120,7 +120,22 @@
       "price": 55990
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": 14,
+      "brand": "New Balance",
+      "model": "860 v2 Green x Aimé Leon Dore",
+      "img": "./img/sneakers/nb860.jpg",
+      "price": 76990
+    },
+    {
+      "id": 7,
+      "brand": "Nike",
+      "model": "Air Max 270 Cactus Trails x Travis Scott",
+      "img": "./img/sneakers/niketravisscott.jpg",
+      "price": 859990
+    }
+  ],
   "favorites": [
     {
       "id": 14,

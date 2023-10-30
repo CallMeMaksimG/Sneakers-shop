@@ -82,19 +82,21 @@ function Card({
                     </ContentLoader>
                 ) : (
                     <>
-                        { onAddToFavorite && <div
-                            className="card__item-favorit"
-                            onClick={onAddFavorite}
-                        >
-                            <img
-                                onClick={onClickFavorite}
-                                src={
-                                    isItemAdded(favorites, id)
-                                        ? './img/icon/heart-like.svg'
-                                        : './img/icon/heart-unliked.svg'
-                                }
-                            ></img>
-                        </div>}
+                        {onAddToFavorite && (
+                            <div
+                                className="card__item-favorit"
+                                onClick={onAddFavorite}
+                            >
+                                <img
+                                    onClick={onClickFavorite}
+                                    src={
+                                        isItemAdded(favorites, id)
+                                            ? './img/icon/heart-like.svg'
+                                            : './img/icon/heart-unliked.svg'
+                                    }
+                                ></img>
+                            </div>
+                        )}
                         <img src={img}></img>
                         <p className="cards__item-brand">{brand}</p>
                         <p className="cards__item-model">{model}</p>
@@ -102,22 +104,24 @@ function Card({
                             <span className="cards__item-price">
                                 {price} руб.
                             </span>
-                            {onAddCart && <button
-                                className={
-                                    isItemAdded(cartItems, id)
-                                        ? 'cards__item-btn--active'
-                                        : 'cards__item-btn'
-                                }
-                                onClick={onClickPlus}
-                            >
-                                <img
-                                    src={
+                            {onAddCart && (
+                                <button
+                                    className={
                                         isItemAdded(cartItems, id)
-                                            ? './img/icon/check.svg'
-                                            : './img/icon/plus.svg'
+                                            ? 'cards__item-btn--active'
+                                            : 'cards__item-btn'
                                     }
-                                ></img>
-                            </button>}
+                                    onClick={onClickPlus}
+                                >
+                                    <img
+                                        src={
+                                            isItemAdded(cartItems, id)
+                                                ? './img/icon/check.svg'
+                                                : './img/icon/plus.svg'
+                                        }
+                                    ></img>
+                                </button>
+                            )}
                         </div>
                     </>
                 )}
