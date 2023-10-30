@@ -10,6 +10,10 @@ function Cart({ onClose, items = [], setCartItems, onRemove }) {
     const [isOrderComplete, setIsOrderComplete] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
+    const totalPrice = cartItems.reduce((acc, curentValue) => {
+        return acc + curentValue.price;
+    }, 0);
+
     const onClickOrder = async () => {
         try {
             setIsLoading(true);
@@ -73,9 +77,7 @@ function Cart({ onClose, items = [], setCartItems, onRemove }) {
                             <div className="cart__total-price">
                                 <span>Итог</span>
                                 <span className="cart__price">
-                                    {items.reduce((acc, curentValue) => {
-                                        return acc + curentValue.price;
-                                    }, 0)}{' '}
+                                    {totalPrice}{' '}
                                     руб.
                                 </span>
                             </div>

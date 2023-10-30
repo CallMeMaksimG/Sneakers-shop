@@ -11,9 +11,9 @@ function sortSneakers(items, key) {
         return sortedItems;
     }
     if (key === 'priceASC') {
-      sortedItems.sort((a, b) => a.price - b.price);
-    } else if (key === 'priceDESC'){
-       sortedItems.sort((a, b) => b.price - a.price);
+        sortedItems.sort((a, b) => a.price - b.price);
+    } else if (key === 'priceDESC') {
+        sortedItems.sort((a, b) => b.price - a.price);
     }
     return sortedItems;
 }
@@ -31,7 +31,7 @@ function Home({
     const location = useLocation();
     const query = queryString.parse(location.search);
     const [sortKey, setSortKey] = useState(query.sort);
-    
+
     const [sortedItems, setSortedItems] = useState(
         sortSneakers(items, sortKey)
     );
@@ -49,19 +49,16 @@ function Home({
     const onClickDropdownItem = (event) => {
         const dropdownItemText = event.target.innerText;
         const idSortMethod = event.target.dataset.id;
-        console.log(idSortMethod)
         setDropdownSortItem(dropdownItemText);
         if (idSortMethod == 1) {
             setSortKey();
-            
         } else if (idSortMethod == 2) {
             setSortKey('priceASC');
         } else if (idSortMethod == 3) {
             setSortKey('priceDESC');
         }
         sortSneakers(items, sortKey);
-        
-    }
+    };
     const { isItemAdded } = useContext(AppContext);
     const renderItems = () => {
         return (
@@ -151,13 +148,25 @@ function Home({
                     }
                 >
                     <ul className="sorted__list">
-                        <li data-id="1" className="sorted__list-item" onClick={onClickDropdownItem}>
+                        <li
+                            data-id="1"
+                            className="sorted__list-item"
+                            onClick={onClickDropdownItem}
+                        >
                             По умолчанию
                         </li>
-                        <li data-id="2" className="sorted__list-item" onClick={onClickDropdownItem}>
+                        <li
+                            data-id="2"
+                            className="sorted__list-item"
+                            onClick={onClickDropdownItem}
+                        >
                             По возрастанию цены
                         </li>
-                        <li data-id="3" className="sorted__list-item" onClick={onClickDropdownItem}>
+                        <li
+                            data-id="3"
+                            className="sorted__list-item"
+                            onClick={onClickDropdownItem}
+                        >
                             По убыванию цены
                         </li>
                     </ul>
