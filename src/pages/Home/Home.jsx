@@ -171,7 +171,7 @@ function Home({
                         </li>
                     </ul>
                 </div>
-            </div>
+             </div> 
             <div className="cards">{renderItems()}</div>
         </main>
     );

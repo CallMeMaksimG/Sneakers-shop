@@ -25,6 +25,7 @@ function Cart({ onClose, items = [], onRemove }) {
             });
         } catch (error) {
             alert('Не удалось создать заказ');
+            console.log(error)
         }
         setIsLoading(false);
     };

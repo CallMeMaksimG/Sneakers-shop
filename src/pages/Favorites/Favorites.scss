@@ -20,10 +20,6 @@ main {
     gap: 50px;
     padding-bottom: 50px;
 
-    @media(max-width: 725px) {
-        
-      }
-
     @media(max-width: 970px) {
     grid-template-columns: repeat(3, 1fr);
     }

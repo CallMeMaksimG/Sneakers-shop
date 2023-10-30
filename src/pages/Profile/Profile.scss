@@ -6,6 +6,11 @@ main {
     display: flex;
     align-items: center;
     gap: 30px;
+    padding-bottom: 50px;
+
+    @media(max-width: 725px) {
+        padding-bottom: 30px;
+    }
 }
 
 .profile__nav-back-btn {
@@ -28,4 +33,9 @@ main {
     font-size: 26px;
     text-align: center;
     padding-top: 80px;
+}
+
+.orders__number {
+    padding-bottom: 20px;
+    font-size: 18px;
 }
