@@ -141,6 +141,20 @@
       "model": "Dunk SB Low Pro QS x Parra",
       "img": "./img/sneakers/nikexparra.jpg",
       "price": 1259900
+    },
+    {
+      "id": 2,
+      "brand": "New Balance",
+      "model": "990v5 x Aimé Leon Dore",
+      "img": "./img/sneakers/NB990v5.jpg",
+      "price": 118990
+    },
+    {
+      "id": 1,
+      "brand": "New Balance",
+      "model": "990v3 x JJJJound",
+      "img": "./img/sneakers/NB990v3.jpg",
+      "price": 87990
     }
   ],
   "favorites": [

@@ -82,7 +82,7 @@ function Card({
                     </ContentLoader>
                 ) : (
                     <>
-                        <div
+                        { onAddToFavorite && <div
                             className="card__item-favorit"
                             onClick={onAddFavorite}
                         >
@@ -94,7 +94,7 @@ function Card({
                                         : './img/icon/heart-unliked.svg'
                                 }
                             ></img>
-                        </div>
+                        </div>}
                         <img src={img}></img>
                         <p className="cards__item-brand">{brand}</p>
                         <p className="cards__item-model">{model}</p>
@@ -102,7 +102,7 @@ function Card({
                             <span className="cards__item-price">
                                 {price} руб.
                             </span>
-                            <button
+                            {onAddCart && <button
                                 className={
                                     isItemAdded(cartItems, id)
                                         ? 'cards__item-btn--active'
@@ -117,7 +117,7 @@ function Card({
                                             : './img/icon/plus.svg'
                                     }
                                 ></img>
-                            </button>
+                            </button>}
                         </div>
                     </>
                 )}
