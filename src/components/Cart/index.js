@@ -1,18 +1,14 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
-import AppContext from '../../context';
 import Info from '../Info.jsx/Info';
+import { useCart } from '../../hooks/useCart';
 import './Cart.scss';
 
-function Cart({ onClose, items = [], setCartItems, onRemove }) {
-    const { cartItems, setCartOpened } = useContext(AppContext);
+function Cart({ onClose, items = [], onRemove }) {
     const [orderId, setOrderId] = useState(null);
     const [isOrderComplete, setIsOrderComplete] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-
-    const totalPrice = cartItems.reduce((acc, curentValue) => {
-        return acc + curentValue.price;
-    }, 0);
+    const { cartItems, setCartItems, totalPrice } = useCart();
 
     const onClickOrder = async () => {
         try {
@@ -77,8 +73,7 @@ function Cart({ onClose, items = [], setCartItems, onRemove }) {
                             <div className="cart__total-price">
                                 <span>Итог</span>
                                 <span className="cart__price">
-                                    {totalPrice}{' '}
-                                    руб.
+                                    {totalPrice} руб.
                                 </span>
                             </div>
                             <div className="cart__bottom-btn-wrapper">
