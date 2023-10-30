@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { createContext, useEffect, useState } from 'react';
-import queryString from 'query-string';
+import { Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Grain from './components/Grain';
 import Cart from './components/Cart/index';
@@ -20,23 +19,23 @@ function App() {
 
     useEffect(() => {
         async function fetchData() {
-            const cartItemsResponse = await axios.get(
-                'http://localhost:30001/cart'
-            );
-            const favoritesResponse = await axios.get(
-                'http://localhost:30001/favorites'
-            );
-            const itemsResponse = await axios.get(
-                'http://localhost:30001/items'
-            );
+            try {
+                const [cartItemsResponse, favoritesResponse, itemsResponse] =
+                    await Promise.all([
+                        axios.get('http://localhost:30001/cart'),
+                        axios.get('http://localhost:30001/favorites'),
+                        axios.get('http://localhost:30001/items'),
+                    ]);
 
-            setIsLoading(false);
-
-            setCartItems(cartItemsResponse.data);
-            setFavorites(favoritesResponse.data);
-            setItems(itemsResponse.data);
+                setIsLoading(false);
+                setCartItems(cartItemsResponse.data);
+                setFavorites(favoritesResponse.data);
+                setItems(itemsResponse.data);
+            } catch (error) {
+                alert('Ошибка при запросе данных');
+                console.error(error);
+            }
         }
-
         fetchData();
     }, []);
 
@@ -44,25 +43,31 @@ function App() {
         setCartOpened(true);
     };
 
-    const onAddToCart = (obj) => {
+    const onAddToCart = async (obj) => {
         try {
             if (cartItems.find((item) => item.id === obj.id)) {
-                axios.delete(`http://localhost:30001/cart/${obj.id}`);
                 setCartItems((prev) =>
                     prev.filter((item) => item.id !== obj.id)
                 );
+                await axios.delete(`http://localhost:30001/cart/${obj.id}`);
             } else {
-                axios.post('http://localhost:30001/cart', obj);
                 setCartItems((prev) => [...prev, obj]);
+                await axios.post('http://localhost:30001/cart', obj);
             }
         } catch (error) {
             alert('Не удалось добавить в корзину');
+            console.error(error);
         }
     };
 
     const onRemoveItem = (id, obj) => {
-        axios.delete(`http://localhost:30001/cart/${id}`);
-        setCartItems(obj.filter((item) => item.id !== id));
+        try {
+            axios.delete(`http://localhost:30001/cart/${id}`);
+            setCartItems(obj.filter((item) => item.id !== id));
+        } catch (error) {
+            alert('Ошибка при удалении из корзины');
+            console.error(error);
+        }
     };
 
     const onAddToFavorite = async (obj) => {
@@ -94,23 +99,28 @@ function App() {
 
     return (
         <AppContext.Provider
-            value={{ items, cartItems, favorites, onAddToCart, onAddToFavorite, isItemAdded, setCartOpened }}
+            value={{
+                items,
+                cartItems,
+                favorites,
+                onAddToCart,
+                onAddToFavorite,
+                isItemAdded,
+                setCartOpened,
+            }}
         >
-            <>
                 {cartOpened
-                    ? (document.body.style.overflow = 'hidden')
-                    : (document.body.style.overflow = '')}
-                {/* {cartOpened && (
-                    )} */}
-                    
-                    <Cart
-                        items={cartItems}
-                        addToCart={onAddToCart}
-                        onRemove={onRemoveItem}
-                        onClose={() => setCartOpened(false)}
-                        setCartItems={setCartItems}
-                        opened={cartOpened}
-                    />
+                    ? (document.body.classList.add('hidden'))
+                    : (document.body.classList.remove('hidden'))}
+
+                <Cart
+                    items={cartItems}
+                    addToCart={onAddToCart}
+                    onRemove={onRemoveItem}
+                    onClose={() => setCartOpened(false)}
+                    setCartItems={setCartItems}
+                    opened={cartOpened}
+                />
 
                 <Grain />
 
@@ -145,7 +155,6 @@ function App() {
                         <Route path="/profile" element={<Profile />}></Route>
                     </Routes>
                 </div>
-            </>
         </AppContext.Provider>
     );
 }

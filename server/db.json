@@ -120,43 +120,7 @@
       "price": 55990
     }
   ],
-  "cart": [
-    {
-      "id": 5,
-      "brand": "New Balance",
-      "model": "RC Elite SI x Stone Island",
-      "img": "./img/sneakers/nbxsi.jpg",
-      "price": 84799
-    },
-    {
-      "id": 4,
-      "brand": "Salomon",
-      "model": "XT-6 GTX x Kith",
-      "img": "./img/sneakers/salomonxkith.jpg",
-      "price": 92899
-    },
-    {
-      "id": 6,
-      "brand": "Nike",
-      "model": "Dunk SB Low Pro QS x Parra",
-      "img": "./img/sneakers/nikexparra.jpg",
-      "price": 1259900
-    },
-    {
-      "id": 2,
-      "brand": "New Balance",
-      "model": "990v5 x Aimé Leon Dore",
-      "img": "./img/sneakers/NB990v5.jpg",
-      "price": 118990
-    },
-    {
-      "id": 1,
-      "brand": "New Balance",
-      "model": "990v3 x JJJJound",
-      "img": "./img/sneakers/NB990v3.jpg",
-      "price": 87990
-    }
-  ],
+  "cart": [],
   "favorites": [
     {
       "id": 14,
@@ -166,39 +130,25 @@
       "price": 76990
     },
     {
-      "id": 2,
-      "brand": "New Balance",
-      "model": "990v5 x Aimé Leon Dore",
-      "img": "./img/sneakers/NB990v5.jpg",
-      "price": 118990
-    },
-    {
-      "id": 10,
+      "id": 3,
       "brand": "Adidas",
-      "model": "Samba x Wales Bonner",
-      "img": "./img/sneakers/sambaxwb.jpg",
-      "price": 201990
+      "model": "x Kith x Clarks Samba '8th Street - White'",
+      "img": "./img/sneakers/Adidas-samba-kith.jpg",
+      "price": 110990
     },
     {
-      "id": 12,
+      "id": 4,
+      "brand": "Salomon",
+      "model": "XT-6 GTX x Kith",
+      "img": "./img/sneakers/salomonxkith.jpg",
+      "price": 92899
+    },
+    {
+      "id": 7,
       "brand": "Nike",
-      "model": "Zoom Road Warrior ISPA",
-      "img": "./img/sneakers/nikewarrior.jpg",
-      "price": 130990
-    },
-    {
-      "id": 13,
-      "brand": "New Balance",
-      "model": "992 'Kith - Steal Blue'",
-      "img": "./img/sneakers/nb992xkith.jpg",
-      "price": 185990
-    },
-    {
-      "id": 1,
-      "brand": "New Balance",
-      "model": "990v3 x JJJJound",
-      "img": "./img/sneakers/NB990v3.jpg",
-      "price": 87990
+      "model": "Air Max 270 Cactus Trails x Travis Scott",
+      "img": "./img/sneakers/niketravisscott.jpg",
+      "price": 859990
     }
   ],
   "orders": [

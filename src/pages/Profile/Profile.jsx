@@ -45,8 +45,8 @@ function Profile() {
             <section className="orders">
                 {orders.map((order, index) => {
                     return (
-                        <>
-                            <h3 key={index} className="orders__number">
+                        <div key={index} className="orders__order">
+                            <h3 className="order__number">
                                 Заказ #{order.id}
                             </h3>
                             <section className="cards">
@@ -62,7 +62,7 @@ function Profile() {
                                           );
                                       })}
                             </section>
-                        </>
+                        </div>
                     );
                 })}
             </section>
