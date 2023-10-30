@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
-import Info from '../Info.jsx/Info';
+
 import { useCart } from '../../hooks/useCart';
+import Info from '../Info.jsx/Info';
 import './Cart.scss';
 
-function Cart({ onClose, items = [], onRemove }) {
+function Cart({ onClose, items = [], onRemove, opened }) {
     const [orderId, setOrderId] = useState(null);
     const [isOrderComplete, setIsOrderComplete] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +32,7 @@ function Cart({ onClose, items = [], onRemove }) {
     };
 
     return (
-        <div className="overlay">
+        <div className={`overlay ${opened ? `overlay--open` : ''}`}>
             <div className="cart">
                 <div className="cart__close" onClick={onClose}>
                     <img

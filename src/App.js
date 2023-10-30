@@ -100,15 +100,17 @@ function App() {
                 {cartOpened
                     ? (document.body.style.overflow = 'hidden')
                     : (document.body.style.overflow = '')}
-                {cartOpened && (
+                {/* {cartOpened && (
+                    )} */}
+                    
                     <Cart
                         items={cartItems}
                         addToCart={onAddToCart}
                         onRemove={onRemoveItem}
                         onClose={() => setCartOpened(false)}
                         setCartItems={setCartItems}
+                        opened={cartOpened}
                     />
-                )}
 
                 <Grain />
 
