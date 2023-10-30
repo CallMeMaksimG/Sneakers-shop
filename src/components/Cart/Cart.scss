@@ -25,6 +25,10 @@
       font-weight: 700;
       margin-bottom: 30px;
     }
+
+    @media(max-width: 525px) {
+      width: 100%;
+    }
   }
 
   .cart__items-wrapper {

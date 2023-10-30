@@ -127,13 +127,6 @@
       "model": "x Kith x Clarks Samba '8th Street - White'",
       "img": "./img/sneakers/Adidas-samba-kith.jpg",
       "price": 110990
-    },
-    {
-      "id": 14,
-      "brand": "New Balance",
-      "model": "860 v2 Green x Aimé Leon Dore",
-      "img": "./img/sneakers/nb860.jpg",
-      "price": 76990
     }
   ],
   "favorites": [
