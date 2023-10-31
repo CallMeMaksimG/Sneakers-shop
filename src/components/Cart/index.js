@@ -57,7 +57,7 @@ function Cart({ onClose, items = [], onRemove, opened }) {
                                         <div className="cart__item-info">
                                             <p>{item.brand}</p>
                                             <p>{item.model}</p>
-                                            <span>{item.price} руб.</span>
+                                            <span>{item.price.toLocaleString()} руб.</span>
                                         </div>
                                         <button
                                             className="cart__item-delete-btn"
@@ -75,7 +75,7 @@ function Cart({ onClose, items = [], onRemove, opened }) {
                             <div className="cart__total-price">
                                 <span>Итог</span>
                                 <span className="cart__price">
-                                    {totalPrice} руб.
+                                    {totalPrice.toLocaleString()} руб.
                                 </span>
                             </div>
                             <div className="cart__bottom-btn-wrapper">

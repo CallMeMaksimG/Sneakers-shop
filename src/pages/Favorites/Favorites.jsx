@@ -28,7 +28,7 @@ const Favorites = ({ onAddToFavorite, onAddToCart }) => {
                             brand={card.brand}
                             model={card.model}
                             img={card.img}
-                            price={card.price}
+                            price={card.price.toLocaleString()}
                             favorited={true}
                             onAddToFavorite={onAddToFavorite}
                             onAddCart={onAddToCart}

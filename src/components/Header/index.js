@@ -29,7 +29,7 @@ function Header({ onClickCart }) {
                 </Link>
                 <li className="header__cart" onClick={onClickCart}>
                     <img src="/img/icon/cart.svg" alt="Корзина"></img>
-                    <span>{totalPrice} руб.</span>
+                    <span>{totalPrice.toLocaleString()} руб.</span>
                 </li>
                 <Link to="/profile">
                     <li className="header__profile">

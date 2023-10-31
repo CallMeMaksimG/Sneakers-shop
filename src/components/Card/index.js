@@ -102,7 +102,7 @@ function Card({
                         <p className="cards__item-model">{model}</p>
                         <div className="cards__item-bottom">
                             <span className="cards__item-price">
-                                {price} руб.
+                                {price.toLocaleString()} руб.
                             </span>
                             {onAddCart && (
                                 <button
