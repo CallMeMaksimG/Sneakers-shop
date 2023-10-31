@@ -9,6 +9,7 @@
     visibility: hidden;
     opacity: 0;
     transition: opacity .2s ease-in, visibility .2s ease-in;
+    overflow: hidden;
 
     &--open {
       visibility: visible;
