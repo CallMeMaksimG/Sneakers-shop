@@ -3,6 +3,8 @@ import queryString from 'query-string';
 import Card from '../../components/Card';
 import AppContext from '../../context';
 import { useLocation } from 'react-router-dom';
+import Swiper from '../../components/Swiper';
+import './Home.scss';
 
 const SORT_KEYS = ['priceASC', 'priceDESC'];
 function sortSneakers(items, key) {
@@ -95,7 +97,9 @@ function Home({
     };
 
     return (
+        
         <main className="main">
+            <Swiper />
             <div className="main__top">
                 <h1 className="main__title">
                     {searchValue

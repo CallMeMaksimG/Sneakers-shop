@@ -19,7 +19,7 @@ body {
 }
 
 .main {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 
 .cards {
@@ -48,6 +48,7 @@ body {
   align-items: center;
   padding-bottom: 50px;
   padding-bottom: 25px;
+  padding-top: 25px;
 
   @media(max-width: 725px) {
     flex-direction: column-reverse;
