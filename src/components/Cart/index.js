@@ -5,11 +5,11 @@ import { useCart } from '../../hooks/useCart';
 import Info from '../Info.jsx/Info';
 import './Cart.scss';
 
-function Cart({ onClose, items = [], onRemove, opened }) {
+function Cart({ onClose, items = [], onRemove, opened, setCartItems }) {
     const [orderId, setOrderId] = useState(null);
     const [isOrderComplete, setIsOrderComplete] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
-    const { cartItems, setCartItems, totalPrice } = useCart();
+    const { cartItems, totalPrice } = useCart();
 
     const onClickOrder = async () => {
         try {

@@ -46,13 +46,13 @@ function App() {
     const onAddToCart = async (obj) => {
         try {
             if (cartItems.find((item) => item.id === obj.id)) {
+                await axios.delete(`http://localhost:30001/cart/${obj.id}`);
                 setCartItems((prev) =>
                     prev.filter((item) => item.id !== obj.id)
                 );
-                await axios.delete(`http://localhost:30001/cart/${obj.id}`);
             } else {
-                setCartItems((prev) => [...prev, obj]);
                 await axios.post('http://localhost:30001/cart', obj);
+                setCartItems((prev) => [...prev, obj]);
             }
         } catch (error) {
             alert('Не удалось добавить в корзину');
