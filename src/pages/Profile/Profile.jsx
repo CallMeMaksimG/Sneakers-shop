@@ -42,7 +42,8 @@ function Profile() {
                 </Link>
                 <h1 className="main__title">Мои заказы</h1>
             </section>
-            <section className="orders">
+
+            {orders.length > 0 ? (<section className="orders">
                 {orders.map((order, index) => {
                     return (
                         <div key={index} className="orders__order">
@@ -65,7 +66,10 @@ function Profile() {
                         </div>
                     );
                 })}
-            </section>
+            </section>) : (
+                <h1 className="orders__empty">Вы еще не сделали ни одного заказа</h1>
+            )}
+            
         </main>
     );
 }
