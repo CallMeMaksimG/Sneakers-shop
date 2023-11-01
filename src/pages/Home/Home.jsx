@@ -109,14 +109,14 @@ function Home({
                 <div className="search">
                     <img
                         className="search__icon"
-                        src="./img/icon/search.svg"
+                        src= {process.env.PUBLIC_URL + "/img/icon/search.svg"}
                         alt="search"
                     />
                     {searchValue && (
                         <img
                             onClick={() => setSearchValue('')}
                             className="search__clear-btn"
-                            src="./img/icon/clear.svg"
+                            src={process.env.PUBLIC_URL + "/img/icon/clear.svg"}
                             alt="clear"
                         />
                     )}
@@ -140,7 +140,7 @@ function Home({
                                 ? 'sorted__btn-icon'
                                 : 'sorted__btn-icon sorted__btn-icon--open'
                         }
-                        src="./img/icon/arrow-down.svg"
+                        src= { process.env.PUBLIC_URL + "/img/icon/arrow-down.svg"}
                         alt="arrow-down"
                     />
                 </div>

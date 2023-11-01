@@ -37,7 +37,7 @@ function Cart({ onClose, items = [], onRemove, opened, setCartItems }) {
                 <div className="cart__close" onClick={onClose}>
                     <img
                         className="cart__close-btn"
-                        src="./img/icon/close.svg"
+                        src={process.env.PUBLIC_URL + "/img/icon/close.svg"}
                         alt="close"
                     ></img>
                 </div>
@@ -51,7 +51,7 @@ function Cart({ onClose, items = [], onRemove, opened, setCartItems }) {
                                     <div key={item.id} className="cart__item">
                                         <img
                                             className="cart__item-img"
-                                            src={item.img}
+                                            src={process.env.PUBLIC_URL + item.img}
                                             alt={item.brand + item.model}
                                         ></img>
                                         <div className="cart__item-info">
@@ -65,7 +65,7 @@ function Cart({ onClose, items = [], onRemove, opened, setCartItems }) {
                                                 onRemove(item.id, items)
                                             }
                                         >
-                                            <img src="./img/icon/delete.svg"></img>
+                                            <img src={process.env.PUBLIC_URL + "/img/icon/delete.svg"}></img>
                                         </button>
                                     </div>
                                 );

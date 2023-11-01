@@ -37,7 +37,7 @@ function Profile() {
             <section className="profile__nav">
                 <Link to="/">
                     <button className="profile__nav-back-btn">
-                        <img src="../../../img/icon/back.svg" alt="Назад" />
+                        <img src={process.env.PUBLIC_URL + "/img/icon/back.svg"} alt="Назад" />
                     </button>
                 </Link>
                 <h1 className="main__title">Мои заказы</h1>

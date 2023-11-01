@@ -91,13 +91,13 @@ function Card({
                                     onClick={onClickFavorite}
                                     src={
                                         isItemAdded(favorites, id)
-                                            ? './img/icon/heart-like.svg'
-                                            : './img/icon/heart-unliked.svg'
+                                            ? process.env.PUBLIC_URL + "/img/icon/heart-like.svg"
+                                            : process.env.PUBLIC_URL + "/img/icon/heart-unliked.svg"
                                     }
                                 ></img>
                             </div>
                         )}
-                        <img src={img}></img>
+                        <img src={process.env.PUBLIC_URL + img}></img>
                         <p className="cards__item-brand">{brand}</p>
                         <p className="cards__item-model">{model}</p>
                         <div className="cards__item-bottom">
@@ -116,8 +116,8 @@ function Card({
                                     <img
                                         src={
                                             isItemAdded(cartItems, id)
-                                                ? './img/icon/check.svg'
-                                                : './img/icon/plus.svg'
+                                                ? process.env.PUBLIC_URL + '/img/icon/check.svg'
+                                                : process.env.PUBLIC_URL + '/img/icon/plus.svg'
                                         }
                                     ></img>
                                 </button>

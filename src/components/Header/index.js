@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 import './Header.scss';
@@ -11,7 +10,8 @@ function Header({ onClickCart }) {
                 <div className="header__left">
                     <img
                         className="header__logo"
-                        src="/img/icon/logo.svg"
+                        src={process.env.PUBLIC_URL + "/img/icon/logo.svg"}
+                        alt="logo"
                     ></img>
                     <div className="header__info">
                         <h3>SNEAKERSHOP</h3>
@@ -23,17 +23,17 @@ function Header({ onClickCart }) {
             <ul className="header__right">
                 <Link to="/favorites">
                     <li className="header__favorite">
-                        <img src="/img/icon/favorite.svg" alt="Избранное"></img>
+                        <img src={process.env.PUBLIC_URL + "/img/icon/favorite.svg"} alt="Избранное"></img>
                         <span>Избранное</span>
                     </li>
                 </Link>
                 <li className="header__cart" onClick={onClickCart}>
-                    <img src="/img/icon/cart.svg" alt="Корзина"></img>
+                    <img src={process.env.PUBLIC_URL + "/img/icon/cart.svg"} alt="Корзина"></img>
                     <span>{totalPrice.toLocaleString()} руб.</span>
                 </li>
                 <Link to="/profile">
                     <li className="header__profile">
-                        <img src="/img/icon/account.svg" alt="Профиль"></img>
+                        <img src={process.env.PUBLIC_URL + "/img/icon/account.svg"} alt="Профиль"></img>
                         <span>Профиль</span>
                     </li>
                 </Link>
