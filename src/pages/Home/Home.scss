@@ -4,4 +4,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 10px;
-  }
+}
+
+.swiper {
+    @media (max-width: 750px) {
+        display: none;
+    }
+}

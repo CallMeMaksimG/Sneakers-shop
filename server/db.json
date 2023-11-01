@@ -121,7 +121,22 @@
     }
   ],
   "cart": [],
-  "favorites": [],
+  "favorites": [
+    {
+      "id": 3,
+      "brand": "Adidas",
+      "model": "x Kith x Clarks Samba '8th Street - White'",
+      "img": "./img/sneakers/Adidas-samba-kith.jpg",
+      "price": 110990
+    },
+    {
+      "id": 4,
+      "brand": "Salomon",
+      "model": "XT-6 GTX x Kith",
+      "img": "./img/sneakers/salomonxkith.jpg",
+      "price": 92899
+    }
+  ],
   "orders": [
     {
       "items": [
