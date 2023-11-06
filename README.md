@@ -21,5 +21,5 @@
 - БЭМ;
 - Адаптивная верстка.
 
-[Перейти](hhttps://callmemaksimg.github.io/Sneakers-shop/#/)
+[Перейти](https://callmemaksimg.github.io/Sneakers-shop/#/)
 
