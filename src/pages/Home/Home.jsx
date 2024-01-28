@@ -4,6 +4,7 @@ import Card from '../../components/Card';
 import AppContext from '../../context';
 import { useLocation } from 'react-router-dom';
 import Swiper from '../../components/Swiper';
+import Footer from '../../components/Footer/Footer';
 import './Home.scss';
 
 const SORT_KEYS = ['priceASC', 'priceDESC'];
@@ -97,87 +98,97 @@ function Home({
     };
 
     return (
-        
-        <main className="main">
-            <Swiper />
-            <div className="main__top">
-                <h1 className="main__title">
-                    {searchValue
-                        ? `Поиск по запросу "${searchValue}"`
-                        : 'Все кроссовки'}
-                </h1>
-                <div className="search">
-                    <img
-                        className="search__icon"
-                        src= {process.env.PUBLIC_URL + "/img/icon/search.svg"}
-                        alt="search"
-                    />
-                    {searchValue && (
+        <>
+            <main className="main">
+                <Swiper />
+                <div className="main__top">
+                    <h1 className="main__title">
+                        {searchValue
+                            ? `Поиск по запросу "${searchValue}"`
+                            : 'Все кроссовки'}
+                    </h1>
+                    <div className="search">
                         <img
-                            onClick={() => setSearchValue('')}
-                            className="search__clear-btn"
-                            src={process.env.PUBLIC_URL + "/img/icon/clear.svg"}
-                            alt="clear"
+                            className="search__icon"
+                            src={
+                                process.env.PUBLIC_URL + '/img/icon/search.svg'
+                            }
+                            alt="search"
                         />
-                    )}
-                    <input
-                        onChange={onChangeSearchInput}
-                        className="search__input"
-                        placeholder="Поиск..."
-                        value={searchValue}
-                    />
-                </div>
-            </div>
-            <div
-                className={!sortOpened ? 'sorted' : 'sorted sorted--open'}
-                onClick={onClickSortBtn}
-            >
-                <div className="sorted__btn">
-                    <span>{dropdownSortItem}</span>{' '}
-                    <img
-                        className={
-                            !sortOpened
-                                ? 'sorted__btn-icon'
-                                : 'sorted__btn-icon sorted__btn-icon--open'
-                        }
-                        src= { process.env.PUBLIC_URL + "/img/icon/arrow-down.svg"}
-                        alt="arrow-down"
-                    />
+                        {searchValue && (
+                            <img
+                                onClick={() => setSearchValue('')}
+                                className="search__clear-btn"
+                                src={
+                                    process.env.PUBLIC_URL +
+                                    '/img/icon/clear.svg'
+                                }
+                                alt="clear"
+                            />
+                        )}
+                        <input
+                            onChange={onChangeSearchInput}
+                            className="search__input"
+                            placeholder="Поиск..."
+                            value={searchValue}
+                        />
+                    </div>
                 </div>
                 <div
-                    className={
-                        !sortOpened
-                            ? 'sorted__dropdown'
-                            : 'sorted__dropdown sorted__dropdown--open'
-                    }
+                    className={!sortOpened ? 'sorted' : 'sorted sorted--open'}
+                    onClick={onClickSortBtn}
                 >
-                    <ul className="sorted__list">
-                        <li
-                            data-id="1"
-                            className="sorted__list-item"
-                            onClick={onClickDropdownItem}
-                        >
-                            По умолчанию
-                        </li>
-                        <li
-                            data-id="2"
-                            className="sorted__list-item"
-                            onClick={onClickDropdownItem}
-                        >
-                            По возрастанию цены
-                        </li>
-                        <li
-                            data-id="3"
-                            className="sorted__list-item"
-                            onClick={onClickDropdownItem}
-                        >
-                            По убыванию цены
-                        </li>
-                    </ul>
+                    <div className="sorted__btn">
+                        <span>{dropdownSortItem}</span>{' '}
+                        <img
+                            className={
+                                !sortOpened
+                                    ? 'sorted__btn-icon'
+                                    : 'sorted__btn-icon sorted__btn-icon--open'
+                            }
+                            src={
+                                process.env.PUBLIC_URL +
+                                '/img/icon/arrow-down.svg'
+                            }
+                            alt="arrow-down"
+                        />
+                    </div>
+                    <div
+                        className={
+                            !sortOpened
+                                ? 'sorted__dropdown'
+                                : 'sorted__dropdown sorted__dropdown--open'
+                        }
+                    >
+                        <ul className="sorted__list">
+                            <li
+                                data-id="1"
+                                className="sorted__list-item"
+                                onClick={onClickDropdownItem}
+                            >
+                                По умолчанию
+                            </li>
+                            <li
+                                data-id="2"
+                                className="sorted__list-item"
+                                onClick={onClickDropdownItem}
+                            >
+                                По возрастанию цены
+                            </li>
+                            <li
+                                data-id="3"
+                                className="sorted__list-item"
+                                onClick={onClickDropdownItem}
+                            >
+                                По убыванию цены
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-             </div> 
-            <div className="cards">{renderItems()}</div>
-        </main>
+                <div className="cards">{renderItems()}</div>
+            </main>
+            <Footer />
+        </>
     );
 }
 
